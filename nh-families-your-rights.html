@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your Rights — NH Families & DCYF</title>
+<meta name="description" content="What New Hampshire law required DCYF to tell you — and didn't. The legal basis for challenging an 'Unfounded with Reasonable Concern' finding, including missing findings of fact, missing conclusions of law, and your right to appeal.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
 
@@ -662,11 +663,13 @@
 
   /* ── ANIMATIONS ── */
   .fade-up {
-    opacity: 0;
-    transform: translateY(16px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up.will-animate {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  .fade-up.will-animate.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
@@ -674,11 +677,11 @@
 
 <!-- NAV -->
 <nav>
-  <a href="https://torrenholt.github.io/appeal-URCs/" class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></a>
+  <a href="index.html" class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></a>
   <div class="nav-links-group">
-    <a href="https://torrenholt.github.io/appeal-URCs/" class="nav-link">Home</a>
-    <a href="#" class="nav-link active">Your Rights</a>
-    <a href="https://torrenholt.github.io/appeal-URCs/#contact" class="nav-cta">Get in Touch</a>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="nh-families-your-rights.html" class="nav-link active">Your Rights</a>
+    <a href="index.html#contact" class="nav-cta">Get in Touch</a>
   </div>
 </nav>
 
@@ -1103,14 +1106,14 @@
   <div class="cta-banner-inner">
     <h2>Does this apply to your situation?</h2>
     <p>You do not need to know whether you have grounds before reaching out. Tell us about your letter and we can help you understand whether any of these legal arguments may be relevant to your case — at no cost and with no obligation.</p>
-    <a href="https://torrenholt.github.io/appeal-URCs/#contact" class="cta-banner-btn">Get in Touch →</a>
+    <a href="index.html#contact" class="cta-banner-btn">Get in Touch →</a>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <span>NH Families &amp; DCYF — Your Rights &nbsp;·&nbsp; Informational purposes only. Not legal advice.</span>
-  <span>Related: <a href="https://torrenholt.github.io/becker-v-dhhs">Becker v. DCYF et al.</a> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
+  <span>Related: <span style="color:rgba(255,255,255,0.2);">Becker v. DCYF et al.</span> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
 </footer>
 
 <script>
@@ -1120,11 +1123,23 @@
     document.getElementById('progress').style.width = Math.min(pct, 100) + '%';
   }, { passive: true });
 
-  // Fade-up on scroll
+  // Fade-up on scroll — only hide elements that are BELOW the viewport on load
+  const fadeEls = document.querySelectorAll('.fade-up');
+  fadeEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top >= window.innerHeight) {
+      el.classList.add('will-animate');
+    }
+  });
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-up.will-animate').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
