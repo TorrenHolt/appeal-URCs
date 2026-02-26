@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Rights — NH Families & DCYF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --warm-white:  #faf8f4;
+    --cream:       #f3ede2;
+    --tan:         #e8dece;
+    --ink:         #1c1c1a;
+    --ink-soft:    #3d3d38;
+    --muted:       #8a8578;
+    --rule:        #d6cfc3;
+    --red:         #b33a2a;
+    --red-light:   #f5ede9;
+    --gold:        #a07830;
+    --gold-light:  #faf3e4;
+    --teal:        #2a6b6b;
+    --teal-light:  #e8f3f3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── READING PROGRESS ── */
+  #progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    width: 0%; background: var(--red); z-index: 9999;
+    transition: width 0.1s linear;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links-group {
+    display: flex; align-items: center; gap: 0.25rem;
+  }
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    transition: color 0.15s;
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-link.active { color: var(--red); }
+  .nav-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--warm-white);
+    background: var(--red);
+    padding: 0.45rem 1.1rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.15s;
+    margin-left: 0.5rem;
+  }
+  .nav-cta:hover { background: #952e20; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--tan);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--red) 0%, var(--gold) 60%, var(--teal) 100%);
+  }
+  .hero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block; width: 28px; height: 1px;
+    background: var(--red);
+  }
+  .hero h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--red);
+  }
+  .hero-lead {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-toc {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--tan);
+  }
+  .hero-toc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+  .toc-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 0.3rem 0.75rem;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+    border-radius: 1px;
+  }
+  .toc-pill:hover { border-color: var(--red); color: var(--red); }
+  .toc-pill::before { content: '↓'; font-size: 0.7rem; }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .section-wide {
+    max-width: 100%;
+    padding-left: 0; padding-right: 0;
+  }
+  .section-wide .section-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block; width: 20px; height: 1px;
+    background: var(--rule);
+  }
+
+  h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  h2 em { font-style: italic; color: var(--red); }
+
+  p { color: var(--ink-soft); line-height: 1.8; margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ── SECTION ANCHORS ── */
+  .section-anchor { scroll-margin-top: 80px; }
+
+  /* ── STATUTE BOX ── */
+  .statute-box {
+    background: white;
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--gold);
+    padding: 1.75rem 2rem;
+    margin: 2rem 0;
+  }
+  .statute-box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .statute-box blockquote {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+  .statute-box cite {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+    display: block;
+    margin-top: 0.5rem;
+  }
+  .statute-box p {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  /* ── RED CALLOUT ── */
+  .red-callout {
+    background: var(--red-light);
+    border: 1px solid rgba(179,58,42,0.2);
+    border-left: 4px solid var(--red);
+    padding: 1.75rem 2rem;
+    margin: 2rem 0;
+    border-radius: 0 2px 2px 0;
+  }
+  .red-callout-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.6rem;
+  }
+  .red-callout p {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+    line-height: 1.75;
+  }
+  .red-callout p + p { margin-top: 0.6rem; }
+
+  /* ── VIOLATION TABLE ── */
+  .violation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .violation-card {
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+    position: relative;
+  }
+  .violation-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+  }
+  .violation-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .violation-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 0.975rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  .violation-card p {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ── PARADOX SECTION (dark) ── */
+  .dark-section {
+    background: var(--ink);
+    color: white;
+  }
+  .dark-section .section-inner { padding: 5rem 2rem; }
+  .dark-section h2 { color: white; }
+  .dark-section .eyebrow { color: rgba(255,255,255,0.35); }
+  .dark-section .eyebrow::before { background: rgba(255,255,255,0.2); }
+  .dark-section p { color: rgba(255,255,255,0.65); }
+  .dark-section strong { color: white; }
+
+  .logic-flow {
+    margin: 2.5rem 0;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    padding: 2rem;
+  }
+  .logic-flow-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1.5rem;
+  }
+  .logic-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+  .logic-step + .logic-step {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .logic-marker {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    width: 24px;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .logic-marker.check { color: rgba(42,107,107,0.9); }
+  .logic-marker.cross { color: var(--red); }
+  .logic-marker.arrow { color: rgba(255,255,255,0.3); }
+  .logic-body {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+  .logic-body strong { color: white; }
+
+  .dark-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .dark-col {
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.02);
+  }
+  .dark-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 0.6rem;
+  }
+  .dark-col p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+    margin: 0;
+  }
+  .dark-col strong { color: white; }
+  .dark-col.outcome {
+    border-color: rgba(179,58,42,0.4);
+    background: rgba(179,58,42,0.07);
+  }
+  .dark-col.outcome .dark-col-label { color: rgba(179,58,42,0.7); }
+
+  /* ── TIMELINE / PRECEDENT ── */
+  .timeline {
+    margin: 2.5rem 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 17px; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .timeline-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--rule);
+    margin-top: 0.45rem;
+    margin-left: 12px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .timeline-dot.red { border-color: var(--red); background: var(--red); }
+  .timeline-dot.gold { border-color: var(--gold); background: var(--gold); }
+  .timeline-dot.teal { border-color: var(--teal); background: var(--teal); }
+  .timeline-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .timeline-title {
+    font-family: 'Lora', serif;
+    font-size: 0.975rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .timeline-body {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* ── WHAT THIS MEANS FOR YOU ── */
+  .teal-section { background: var(--teal-light); }
+  .teal-section h2 { color: var(--teal); }
+  .teal-section .eyebrow { color: var(--teal); }
+  .teal-section .eyebrow::before { background: var(--teal); opacity: 0.4; }
+
+  .grounds-list {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .ground-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+    background: white;
+    border: 1px solid rgba(42,107,107,0.15);
+    padding: 1.25rem 1.5rem;
+  }
+  .ground-check {
+    font-size: 0.9rem;
+    color: var(--teal);
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+  }
+  .ground-body h3 {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .ground-body p {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── LATE APPEAL SECTION ── */
+  .two-path {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .path-card {
+    padding: 1.75rem;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+  .path-card.primary { border-color: var(--teal); background: var(--teal-light); }
+  .path-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .path-card.primary .path-num { color: var(--teal); }
+  .path-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  .path-card.primary h3 { color: var(--teal); }
+  .path-card p {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── FAQ ── */
+  .faq { margin: 2rem 0; }
+  .faq-item {
+    border-top: 1px solid var(--rule);
+    padding: 1.25rem 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--rule); }
+  .faq-q {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    list-style: none;
+    user-select: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::after {
+    content: '+';
+    font-family: 'DM Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  details[open] .faq-q::after { content: '−'; }
+  .faq-a {
+    padding-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    max-width: 640px;
+  }
+  .faq-a p { margin-bottom: 0.6rem; }
+  .faq-a p:last-child { margin-bottom: 0; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--red);
+    padding: 3.5rem 2rem;
+    text-align: center;
+  }
+  .cta-banner-inner {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  .cta-banner h2 {
+    font-family: 'Lora', serif;
+    color: white;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: 0.75rem;
+  }
+  .cta-banner p {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+  }
+  .cta-banner-btn {
+    display: inline-block;
+    background: white;
+    color: var(--red);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .cta-banner-btn:hover { background: var(--cream); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.3);
+    padding: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .violation-grid { grid-template-columns: 1fr; }
+    .dark-two-col { grid-template-columns: 1fr; }
+    .two-path { grid-template-columns: 1fr; }
+    .section, .section-wide .section-inner { padding: 3.5rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+    .nav-links-group .nav-link { display: none; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="nh-families-urc.html" class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></a>
+  <div class="nav-links-group">
+    <a href="nh-families-urc.html" class="nav-link">Home</a>
+    <a href="#" class="nav-link active">Your Rights</a>
+    <a href="nh-families-urc.html#contact" class="nav-cta">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Your Rights — NH DCYF Families</div>
+    <h1>What the law required DCYF to tell you — <em>and didn't.</em></h1>
+    <p class="hero-lead">
+      Every URC finding DCYF issued was governed by state administrative law. That law required DCYF to include specific findings of fact, conclusions of law, and notice of your right to appeal. None of those requirements were met. This page explains what they were — and why it matters.
+    </p>
+    <div class="hero-toc">
+      <div class="hero-toc-label">On this page</div>
+      <a href="#findings-requirement" class="toc-pill">The findings requirement</a>
+      <a href="#no-appeal-notice" class="toc-pill">No appeal notice</a>
+      <a href="#probable-cause-paradox" class="toc-pill">The probable cause paradox</a>
+      <a href="#precedent" class="toc-pill">How this was established</a>
+      <a href="#what-this-means" class="toc-pill">What this means for you</a>
+      <a href="#late-appeal" class="toc-pill">Late appeal arguments</a>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION 1: THE FINDINGS REQUIREMENT -->
+<div class="section fade-up section-anchor" id="findings-requirement">
+  <div class="eyebrow">RSA 541-A:35</div>
+  <h2>DCYF was legally required to tell you <em>why</em></h2>
+
+  <p>
+    When a New Hampshire state agency makes a formal decision that adversely affects you, that decision does not get to just say "we have concerns" and close the file. State law is explicit: every final adverse decision must include specific factual findings and legal conclusions.
+  </p>
+
+  <div class="statute-box">
+    <div class="statute-box-label">RSA 541-A:35 — Final Decisions (Administrative Procedure Act)</div>
+    <blockquote>
+      "A final decision or order adverse to a party in a contested case shall be in writing… A final decision shall include findings of fact and conclusions of law, separately stated. Findings of fact, if set forth in statutory language, shall be accompanied by a concise and explicit statement of the underlying facts supporting the findings."
+    </blockquote>
+    <cite>New Hampshire Administrative Procedure Act — RSA 541-A:35</cite>
+    <p>This is not a technicality. It is the foundational requirement that gives administrative decisions their legal validity. Without it, a decision cannot meaningfully be contested — and cannot lawfully be used against you.</p>
+  </div>
+
+  <p>
+    A URC letter was a final decision that adversely affected you. The September 2025 AAU ruling confirmed this explicitly: URC findings are retained indefinitely, can be used as evidence of a "pattern or course of conduct" in future proceedings, and trigger additional investigative review if multiple reports exist. These are legally cognizable harms. They are the hallmarks of an adverse final decision.
+  </p>
+  <p>
+    That means the requirements of RSA 541-A:35 applied to every URC letter DCYF ever issued. Not some of them. All of them.
+  </p>
+
+  <div class="red-callout">
+    <div class="red-callout-label">What your letter actually contained</div>
+    <p>A generic acknowledgment that a report was received. A boilerplate statement that DCYF had "reason to believe" something occurred. Parenting recommendations that were identical across cases. No case-specific facts. No legal analysis. No explanation of what evidence led to the conclusion.</p>
+    <p>This is not a case of findings being inadequate or insufficiently explained. The required statutory elements are completely absent.</p>
+  </div>
+
+  <p>
+    Why does this matter? Because without findings of fact and conclusions of law, you have no meaningful way to challenge the decision. You cannot argue against facts that were never stated. You cannot point to legal error in analysis that was never performed. You are left trying to appeal a shadow — which is precisely what made these findings so difficult to contest.
+  </p>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- SECTION 2: THE FOUR VIOLATIONS -->
+<div class="section fade-up" style="padding-top: 4rem;">
+  <div class="eyebrow">What Was Missing</div>
+  <h2>Four things every URC letter was <em>required</em> to include</h2>
+  <p style="margin-bottom: 2rem;">Under RSA 541-A:35 and fundamental due process principles, DCYF's determination letter was required to contain each of the following. None did.</p>
+
+  <div class="violation-grid">
+    <div class="violation-card">
+      <div class="violation-label">Requirement 1</div>
+      <h3>Specific findings of fact</h3>
+      <p>Not a boilerplate clause. A specific written explanation of what DCYF found to have occurred — what acts, omissions, or circumstances formed the basis for the conclusion. Your letter had none.</p>
+    </div>
+    <div class="violation-card">
+      <div class="violation-label">Requirement 2</div>
+      <h3>Conclusions of law</h3>
+      <p>An explanation of how the identified facts satisfied the applicable legal standard — in this case, the "probable cause" threshold under RSA 169-C:3, XXIX. Your letter had none.</p>
+    </div>
+    <div class="violation-card">
+      <div class="violation-label">Requirement 3</div>
+      <h3>The underlying facts supporting those findings</h3>
+      <p>Even where statutory language is used, RSA 541-A:35 requires a "concise and explicit statement" of the underlying facts. A finding cannot lawfully rest on conclusory language alone. Your letter had none.</p>
+    </div>
+    <div class="violation-card">
+      <div class="violation-label">Requirement 4</div>
+      <h3>Notice of your right to appeal</h3>
+      <p>Due process requires that when government action adversely affects you, you must be told what rights you have to contest it. DCYF's letters provided no such notice — and DCYF actively took the position that no appeal existed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- SECTION 3: NO APPEAL NOTICE -->
+<div class="section fade-up section-anchor" id="no-appeal-notice" style="padding-top: 4rem;">
+  <div class="eyebrow">The Notice Problem</div>
+  <h2>You were never told you could appeal — <em>that was the point.</em></h2>
+
+  <p>
+    Administrative agencies are required to inform the people they act against of their rights. When DCYF issued your URC letter without any mention of appeal rights, it was not a clerical oversight. DCYF's institutional position — maintained through litigation — was that URC findings were <strong>not appealable</strong> at all.
+  </p>
+  <p>
+    This position is now known to have been legally incorrect. But for years, families were told — directly or by silence — that there was nothing to challenge. Families who tried to push back found no process available to them.
+  </p>
+
+  <div class="statute-box">
+    <div class="statute-box-label">What New Hampshire Administrative Law Requires</div>
+    <blockquote>
+      "An agency issuing an adverse decision must provide notice of the right to appeal and the applicable procedures."
+    </blockquote>
+    <cite>N.H. Admin. Rule He-C 201 et seq. — DHHS Administrative Appeals Procedures</cite>
+    <p>This requirement exists precisely so that people know their options. When the requirement is absent and the agency simultaneously denies that any appeal exists, the effect — whether intended or not — is to eliminate access to review entirely.</p>
+  </div>
+
+  <p>
+    The September 2025 ruling in <em>Appeal of Becker</em> directly contradicts DCYF's longstanding position. ALJ Zachary Towle found that URC findings are subject to administrative appeal under RSA 126-A:5 and 541-A. DCYF's motion to dismiss — which argued that the AAU lacked jurisdiction to hear these appeals at all — was denied.
+  </p>
+  <p>
+    That ruling means families who were told there was nothing to appeal were misled. The question now being litigated is whether those families' appeal rights were tolled — legally preserved — because of that misrepresentation.
+  </p>
+</div>
+
+<!-- SECTION 4: PROBABLE CAUSE PARADOX (dark) -->
+<div class="section-wide dark-section fade-up section-anchor" id="probable-cause-paradox">
+  <div class="section-inner">
+    <div class="eyebrow">The Probable Cause Paradox</div>
+    <h2>A legal contradiction embedded in every URC finding</h2>
+
+    <p>
+      Beyond the procedural violations, there is a deeper structural problem with how many URC findings were issued. The legal standard DCYF must meet to issue a URC finding — <strong>"probable cause" to believe abuse or neglect occurred</strong> — triggers a mandatory legal obligation that DCYF routinely failed to fulfill.
+    </p>
+
+    <div class="statute-box" style="background: rgba(255,255,255,0.04); border-color: rgba(160,120,48,0.4); border-left-color: var(--gold); margin: 2rem 0;">
+      <div class="statute-box-label" style="color: var(--gold);">RSA 169-C:34, VII — DCYF's Mandatory Duty</div>
+      <blockquote style="color: rgba(255,255,255,0.85);">
+        "If the child's parents refuse to allow a social worker or state employee on their premises… and the department has probable cause to believe that the child has been abused or neglected, the department shall seek a court order to enter the premises."
+      </blockquote>
+      <cite>RSA 169-C:34, VII (emphasis added — "shall" is mandatory)</cite>
+      <p style="color: rgba(255,255,255,0.55);">The word "shall" in New Hampshire law is not permissive. It is mandatory. If probable cause existed and entry was refused, DCYF was legally required to seek a court order. This is not a policy choice — it is a statutory command.</p>
+    </div>
+
+    <p>If DCYF refused entry to your home was refused during the investigation, this creates the following sequence:</p>
+
+    <div class="logic-flow">
+      <div class="logic-flow-label">What the statute requires — step by step</div>
+      <div class="logic-step">
+        <div class="logic-marker check">✓</div>
+        <div class="logic-body"><strong>You refused DCYF entry</strong> to your home during the assessment.</div>
+      </div>
+      <div class="logic-step">
+        <div class="logic-marker check">✓</div>
+        <div class="logic-body"><strong>DCYF issued a URC finding</strong> — which by statutory definition requires a determination of "probable cause to believe the child was abused or neglected." (RSA 169-C:3, XXIX)</div>
+      </div>
+      <div class="logic-step">
+        <div class="logic-marker cross">✗</div>
+        <div class="logic-body"><strong>DCYF did not seek a court order</strong> for entry — despite the statutory mandate in RSA 169-C:34, VII.</div>
+      </div>
+      <div class="logic-step">
+        <div class="logic-marker arrow">→</div>
+        <div class="logic-body"><strong>This creates a legal contradiction that cannot be resolved.</strong> Either probable cause existed or it did not.</div>
+      </div>
+    </div>
+
+    <div class="dark-two-col">
+      <div class="dark-col outcome">
+        <div class="dark-col-label">If probable cause did NOT exist</div>
+        <p>Then the URC finding is <strong>factually false.</strong> The statutory definition of a URC finding requires probable cause. A finding issued without it has no valid legal basis and must be vacated.</p>
+      </div>
+      <div class="dark-col outcome">
+        <div class="dark-col-label">If probable cause DID exist</div>
+        <p>Then DCYF <strong>violated RSA 169-C:34, VII</strong> by failing to seek the mandatory court order. The assessment was conducted in violation of state law, and any finding resulting from that assessment is tainted by the procedural violation.</p>
+      </div>
+    </div>
+
+    <p>There is no third option. Either the finding lacks a valid factual predicate, or the investigation that produced it was conducted contrary to the statute. In both scenarios, the finding cannot stand as issued.</p>
+    <p>This argument has been raised in active administrative appeals before the AAU and is a central ground in the pending federal civil rights litigation.</p>
+  </div>
+</div>
+
+<!-- SECTION 5: HOW THIS WAS ESTABLISHED -->
+<div class="section fade-up section-anchor" id="precedent">
+  <div class="eyebrow">The Legal Foundation</div>
+  <h2>How these rights were established — <em>step by step</em></h2>
+  <p>The legal landscape governing URC findings has shifted significantly since 2024. Here is the sequence of events that produced the current legal framework.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot red"></div>
+      <div>
+        <div class="timeline-date">November 2024</div>
+        <div class="timeline-title">First administrative appeal of a URC finding filed</div>
+        <div class="timeline-body">A Manchester father — the petitioner in <em>Becker v. DCYF</em> — filed an administrative appeal of a URC finding before the DHHS Administrative Appeals Unit. This was the first appeal of its kind to reach the merits stage. DCYF moved to dismiss, arguing the AAU lacked jurisdiction.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <div class="timeline-date">September 15, 2025</div>
+        <div class="timeline-title">DCYF files motion to dismiss — and its briefing</div>
+        <div class="timeline-body">DCYF argued that URC findings were not "final decisions" subject to appeal, that individuals had no legally protected interest in challenging them, and that the AAU lacked authority to grant any relief. The petitioner filed an objection the same day.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot red"></div>
+      <div>
+        <div class="timeline-date">September 25, 2025</div>
+        <div class="timeline-title">ALJ Towle denies DCYF's motion to dismiss</div>
+        <div class="timeline-body">Administrative Law Judge Zachary Towle issued the Order on Motion to Dismiss in AAU Docket 2025-1149. The ruling found that URC findings are retained indefinitely, can be used as evidence of a pattern of conduct in future proceedings, and therefore constitute adverse final decisions subject to administrative appeal under RSA 126-A:5 and 541-A. DCYF's motion was denied.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot gold"></div>
+      <div>
+        <div class="timeline-date">October 22, 2025</div>
+        <div class="timeline-title">Second administrative appeal filed — 2023 finding</div>
+        <div class="timeline-body">Building on the September 25 ruling, the same petitioner filed a second administrative appeal challenging a 2023 URC finding — Assessment #992540. The appeal argued that the finding violated RSA 541-A:35 (no findings of fact or conclusions of law), was issued in violation of RSA 169-C:34(VII), and should be accepted nunc pro tunc given DCYF's failure to provide appeal notice.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot teal"></div>
+      <div>
+        <div class="timeline-date">January 2, 2026</div>
+        <div class="timeline-title">Third administrative appeal filed — 2025 finding</div>
+        <div class="timeline-body">A second URC finding — Assessment #1153786, dated November 7, 2025 — was appealed. This appeal raised the additional issue that DCYF issued the URC letter <em>after</em> being specifically informed of the September 25 ruling, and continued to omit appeal notice. The appeal also raised the probable cause paradox and the arbitrary and capricious nature of simultaneously finding "reasonable concerns" while recommending the subject of those concerns as the child's primary protective figure.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <div class="timeline-date">Ongoing</div>
+        <div class="timeline-title">Federal civil rights case — U.S. District Court, D.N.H.</div>
+        <div class="timeline-body">A parallel federal civil rights action — <em>Becker v. DCYF et al.</em>, Civil No. 1:24-cv-00430-JL-TSM — is pending before the U.S. District Court for the District of New Hampshire, raising constitutional and civil rights claims arising from the same conduct.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: WHAT THIS MEANS FOR YOU (teal) -->
+<div class="section-wide teal-section fade-up section-anchor" id="what-this-means">
+  <div class="section-inner">
+    <div class="eyebrow">What This Means for You</div>
+    <h2>Possible grounds to challenge your URC finding</h2>
+    <p style="color: var(--ink-soft); margin-bottom: 2rem;">
+      Whether any of these grounds apply to your situation depends on the specific facts of your case. But these are the legal arguments that are currently being raised and litigated. If your URC letter was issued without any of the following, you may have grounds to challenge it.
+    </p>
+
+    <div class="grounds-list">
+      <div class="ground-item">
+        <div class="ground-check">✓</div>
+        <div class="ground-body">
+          <h3>No findings of fact in your letter</h3>
+          <p>If your letter contained no specific explanation of what acts or omissions DCYF found — just boilerplate language about "reason to believe" — then it may violate RSA 541-A:35. Every URC letter DCYF issued used the same standardized form. None contained case-specific findings of fact.</p>
+        </div>
+      </div>
+      <div class="ground-item">
+        <div class="ground-check">✓</div>
+        <div class="ground-body">
+          <h3>No conclusions of law in your letter</h3>
+          <p>If your letter provided no legal analysis explaining how the identified facts satisfied the "probable cause" standard under RSA 169-C:3, XXIX, the letter is missing a mandatory element of a valid final decision under RSA 541-A:35.</p>
+        </div>
+      </div>
+      <div class="ground-item">
+        <div class="ground-check">✓</div>
+        <div class="ground-body">
+          <h3>No notice of appeal rights</h3>
+          <p>If your letter provided no information about your right to appeal — or if you were affirmatively told no appeal was available — the notice requirement was violated. This is also relevant to the "good cause" argument for accepting a late-filed appeal: you were not told a deadline existed because you were told no process existed.</p>
+        </div>
+      </div>
+      <div class="ground-item">
+        <div class="ground-check">✓</div>
+        <div class="ground-body">
+          <h3>You refused DCYF entry to your home</h3>
+          <p>If DCYF was denied access to your home during the assessment and did not seek a court order, yet still issued a URC finding, the probable cause paradox may apply. Either the finding lacks a valid factual basis or the assessment violated RSA 169-C:34, VII. This is a separate and independent ground for challenging the finding.</p>
+        </div>
+      </div>
+      <div class="ground-item">
+        <div class="ground-check">✓</div>
+        <div class="ground-body">
+          <h3>The finding contradicts itself internally</h3>
+          <p>If your letter simultaneously identified you as a "concern" while also identifying you as the child's primary safety resource or recommending you maintain guardianship, this internal contradiction may render the finding arbitrary and capricious — a recognized ground for administrative reversal under New Hampshire law.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: LATE APPEAL -->
+<div class="section fade-up section-anchor" id="late-appeal">
+  <div class="eyebrow">Time Limits & Late Filings</div>
+  <h2>It may not be too late — even if your letter is years old</h2>
+
+  <p>
+    Administrative appeals normally must be filed within a set time period after the decision is issued. Under New Hampshire administrative rules, the standard deadline to appeal a DHHS decision is 30 days.
+  </p>
+  <p>
+    That deadline passed for nearly every family that received a URC finding — because they were never told an appeal was available. DCYF maintained, until the September 2025 ruling, that URC findings were not subject to appeal at all.
+  </p>
+  <p>
+    The question now being litigated is whether appeal deadlines were <strong>tolled</strong> — legally paused — by DCYF's conduct. There are two principal arguments:
+  </p>
+
+  <div class="two-path">
+    <div class="path-card primary">
+      <div class="path-num">Argument 1 — Estoppel / Tolling by Agency Misrepresentation</div>
+      <h3>The agency cannot benefit from its own misrepresentation</h3>
+      <p>DCYF affirmatively represented that URC findings were not appealable. Families relied on that representation. When an agency causes a delay in filing through its own conduct, it cannot then invoke the deadline as a bar. The doctrine of equitable tolling preserves appeal rights in precisely these circumstances.</p>
+    </div>
+    <div class="path-card">
+      <div class="path-num">Argument 2 — Nunc Pro Tunc / Good Cause</div>
+      <h3>The appeal should be accepted as though timely filed</h3>
+      <p>The doctrine of <em>nunc pro tunc</em> — "now for then" — permits an administrative body to accept a late filing as though it had been timely filed when extraordinary circumstances prevented timely action through no fault of the appellant. The combination of no appeal notice, no deadline stated, and DCYF's explicit denial of any appeal right satisfies this standard.</p>
+    </div>
+  </div>
+
+  <div class="red-callout">
+    <div class="red-callout-label">Important limitation</div>
+    <p>These are legal arguments being actively litigated — they have not yet been conclusively resolved by the AAU or any court. Their success will depend on the facts of each case and the rulings of the administrative body. Filing a late appeal does not guarantee it will be accepted.</p>
+    <p>What is certain is that the <em>September 2025 ruling establishing that URC findings are appealable at all</em> is the legal foundation for all of this. Without it, none of these arguments could be made.</p>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- FAQ -->
+<div class="section fade-up" style="padding-top: 4rem;">
+  <div class="eyebrow">Common Questions</div>
+  <h2>Questions about the legal arguments</h2>
+
+  <div class="faq">
+
+    <details class="faq-item">
+      <summary class="faq-q">What does "findings of fact and conclusions of law" actually mean in plain language?</summary>
+      <div class="faq-a">
+        <p>"Findings of fact" means a written statement of what the agency determined to have actually happened — the specific events, behaviors, or circumstances that led to the decision. In a DCYF case, this would mean: what was reported, what was observed, what interviews occurred, and what specific information led DCYF to conclude probable cause existed.</p>
+        <p>"Conclusions of law" means a statement of how those facts satisfy the applicable legal standard. In a URC case: why the identified facts constitute "probable cause" under RSA 169-C:3, XXIX — meaning why they would lead a reasonable person to believe abuse or neglect occurred.</p>
+        <p>The URC letters DCYF sent contained neither. They said, in effect: "We received a report. We have reason to believe something happened. The case is closed." That is not a findings-and-conclusions analysis — it is a conclusion without support.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Why does it matter that the findings are missing? The case was closed — won't it just stay in the file?</summary>
+      <div class="faq-a">
+        <p>URC findings are retained indefinitely under RSA 169-C:35-a, III. More importantly, they can be introduced in future proceedings as evidence of a "pattern or course of conduct" under RSA 169-C:12. If DCYF investigates your family again, a prior URC finding will be in your record — and if there are two or more URC or unfounded reports involving your family, it triggers mandatory administrative review under RSA 169-C:34, II(b).</p>
+        <p>The finding does not simply sit in a file. It accumulates. A finding that could not be challenged when it was issued can become evidence at a future hearing where the stakes may be significantly higher.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Can I demand that DCYF provide findings of fact even now?</summary>
+      <div class="faq-a">
+        <p>You can request them. Whether DCYF is obligated to provide them retroactively is part of what is being litigated. The argument being raised in current appeals is that a decision issued without the required findings is invalid — not merely incomplete — and should be vacated and expunged rather than remanded for DCYF to reconstruct findings years later.</p>
+        <p>The argument against remand is a strong one: you cannot fairly challenge findings that are being reconstructed from memory years after the investigation closed. Due process requires findings to be made contemporaneously, not retrofitted after the fact.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Does the probable cause argument apply if I let DCYF into my home?</summary>
+      <div class="faq-a">
+        <p>No. The probable cause paradox under RSA 169-C:34, VII specifically applies when DCYF was refused entry and did not seek a court order. If you allowed DCYF access during the investigation, this particular argument does not apply — though the other grounds (missing findings of fact, missing conclusions of law, no appeal notice) may still be available.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Is the September 2025 ruling binding on future cases?</summary>
+      <div class="faq-a">
+        <p>The ALJ ruling is not binding precedent in the same way that a New Hampshire Supreme Court decision would be. Administrative law judge decisions do not formally bind future proceedings. However, the ruling directly contradicts the legal position DCYF had asserted, provides a reasoned basis for other families to challenge their findings, and — critically — it was the first ruling of its kind. Its persuasive weight is substantial even if it is not technically binding.</p>
+        <p>The federal civil rights case and any eventual AAU final decisions on the merits will produce additional precedent on these questions.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">What is the difference between the administrative appeal and the federal lawsuit?</summary>
+      <div class="faq-a">
+        <p>The administrative appeals before the DHHS Administrative Appeals Unit are state administrative proceedings. They are decided by an Administrative Law Judge and can result in the finding being vacated and expunged from DCYF's records. The process is governed by state administrative law (RSA 541-A and DHHS rules).</p>
+        <p>The federal civil rights case — <em>Becker v. DCYF et al.</em>, Civil No. 1:24-cv-00430-JL-TSM — is a separate lawsuit in U.S. District Court. It raises constitutional and federal statutory claims (including 42 U.S.C. § 1983) arising from the same conduct. The two proceedings are parallel and complementary, not mutually exclusive.</p>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner fade-up">
+  <div class="cta-banner-inner">
+    <h2>Does this apply to your situation?</h2>
+    <p>You do not need to know whether you have grounds before reaching out. Tell us about your letter and we can help you understand whether any of these legal arguments may be relevant to your case — at no cost and with no obligation.</p>
+    <a href="nh-families-urc.html#contact" class="cta-banner-btn">Get in Touch →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>NH Families &amp; DCYF — Your Rights &nbsp;·&nbsp; Informational purposes only. Not legal advice.</span>
+  <span>Related: <a href="#">Becker v. DCYF et al.</a> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
+</footer>
+
+<script>
+  // Reading progress
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('progress').style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
