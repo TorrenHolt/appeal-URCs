@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NH Families & DCYF — Your Appeal Rights</title>
+<title>Your Appeal Rights — NH Families & DCYF</title>
+<meta name="description" content="If DCYF issued an 'Unfounded with Reasonable Concern' finding against your family, you may have appeal rights they never told you about. Learn what the September 2025 ALJ ruling means for New Hampshire families.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
 
@@ -57,8 +58,24 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
+    text-decoration: none;
   }
   .nav-logo span { color: var(--red); }
+  .nav-links-group {
+    display: flex; align-items: center; gap: 0.25rem;
+  }
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    transition: color 0.15s;
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-link.active { color: var(--red); }
   .nav-cta {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.8rem;
@@ -568,10 +585,11 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></div>
-  <div style="display:flex;align-items:center;gap:0.25rem;">
-    <a href="nh-families-your-rights.html" style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.35rem 0.75rem;transition:color 0.15s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Your Rights</a>
-    <a href="#contact" class="nav-cta">Get in Touch</a>
+  <a href="index.html" class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></a>
+  <div class="nav-links-group">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="nh-families-your-rights.html" class="nav-link">Your Rights</a>
+    <a href="index.html#contact" class="nav-cta">Get in Touch</a>
   </div>
 </nav>
 
@@ -815,12 +833,12 @@
 
         <div class="contact-detail">
           <span class="contact-detail-label">Email directly</span>
-          <a href="mailto:URCINFO2026@gmail.com">URCINFO2026@gmail.com</a>
+          <a href="mailto:contact@nhfamiliesrights.org">contact@nhfamiliesrights.org</a>
         </div>
 
         <div class="contact-detail">
           <span class="contact-detail-label">Related case record</span>
-          <a href="#" style="color: var(--muted); font-size: 0.8rem;">Becker v. DCYF et al. — Full Case Documentation (password required)</a>
+          <span style="color: var(--muted); font-size: 0.8rem;">Becker v. DCYF et al. — Full Case Documentation (coming soon)</span>
         </div>
       </div>
 
@@ -901,10 +919,10 @@
 <!-- FOOTER -->
 <footer>
   <span>NH Families &amp; DCYF — Your Rights &nbsp;·&nbsp; Informational purposes only. Not legal advice.</span>
-  <span>Related: <a href="#">Becker v. DCYF et al.</a> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
+  <span>Related: <span style="color:rgba(255,255,255,0.2);">Becker v. DCYF et al.</span> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Reading progress
   window.addEventListener('scroll', () => {
     const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
@@ -947,11 +965,4 @@
 
       if (res.ok) {
         document.getElementById('form-card').style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Send Message';
-        alert('Something went wrong. Please try emailing us directly.');
-      }
-    } catch(err) {
-      btn.disabled = false;
+        document.getElementById('form-success
