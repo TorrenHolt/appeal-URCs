@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NH Families & DCYF — Your Appeal Rights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --warm-white:  #faf8f4;
+    --cream:       #f3ede2;
+    --tan:         #e8dece;
+    --ink:         #1c1c1a;
+    --ink-soft:    #3d3d38;
+    --muted:       #8a8578;
+    --rule:        #d6cfc3;
+    --red:         #b33a2a;
+    --red-light:   #f5ede9;
+    --gold:        #a07830;
+    --gold-light:  #faf3e4;
+    --teal:        #2a6b6b;
+    --teal-light:  #e8f3f3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── READING PROGRESS ── */
+  #progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    width: 0%; background: var(--red); z-index: 9999;
+    transition: width 0.1s linear;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--warm-white);
+    background: var(--red);
+    padding: 0.45rem 1.1rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: #952e20; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--tan);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--red) 0%, var(--gold) 60%, var(--teal) 100%);
+  }
+  .hero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block; width: 28px; height: 1px;
+    background: var(--red);
+  }
+  .hero h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--red);
+  }
+  .hero-lead {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-stats {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+    padding-top: 2rem;
+    border-top: 1px solid var(--tan);
+  }
+  .stat {
+    display: flex; flex-direction: column; gap: 0.2rem;
+  }
+  .stat-num {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    max-width: 180px;
+    line-height: 1.4;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .section-wide {
+    max-width: 100%;
+    padding-left: 0; padding-right: 0;
+  }
+  .section-wide .section-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block; width: 20px; height: 1px;
+    background: var(--rule);
+  }
+
+  h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  h2 em { font-style: italic; color: var(--red); }
+
+  p { color: var(--ink-soft); line-height: 1.8; margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ── WHAT IS A URC ── */
+  .urc-box {
+    background: var(--red-light);
+    border: 1px solid rgba(179,58,42,0.2);
+    border-left: 4px solid var(--red);
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 0 2px 2px 0;
+  }
+  .urc-box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+  .urc-box p {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+  }
+  .urc-box p + p { margin-top: 0.75rem; }
+
+  /* ── THREE THINGS CARDS ── */
+  .three-things {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .thing-card {
+    padding: 1.75rem;
+    border: 1px solid var(--rule);
+    background: white;
+    position: relative;
+  }
+  .thing-num {
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--tan);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .thing-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  .thing-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ── TIMELINE / RULING SECTION ── */
+  .ruling-section {
+    background: var(--ink);
+    color: white;
+  }
+  .ruling-section .section-inner { padding: 5rem 2rem; }
+  .ruling-section h2 { color: white; }
+  .ruling-section .eyebrow { color: rgba(255,255,255,0.35); }
+  .ruling-section .eyebrow::before { background: rgba(255,255,255,0.2); }
+  .ruling-section p { color: rgba(255,255,255,0.65); }
+  .ruling-section strong { color: white; }
+
+  .ruling-callout {
+    background: rgba(179,58,42,0.15);
+    border: 1px solid rgba(179,58,42,0.4);
+    padding: 1.75rem 2rem;
+    margin: 2rem 0;
+  }
+  .ruling-callout p {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: white;
+    line-height: 1.75;
+    margin-bottom: 0;
+  }
+  .ruling-callout cite {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-top: 1rem;
+    font-style: normal;
+  }
+
+  .ruling-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .ruling-fact {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+  }
+  .ruling-fact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.4rem;
+  }
+  .ruling-fact p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .ruling-fact strong { color: white; }
+
+  /* ── WHAT TO DO ── */
+  .steps-section { background: var(--teal-light); }
+  .steps-section h2 { color: var(--teal); }
+  .steps-section .eyebrow { color: var(--teal); }
+  .steps-section .eyebrow::before { background: var(--teal); opacity: 0.4; }
+
+  .steps {
+    counter-reset: step;
+    margin: 2rem 0;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+    align-items: start;
+  }
+  .step-circle {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    counter-increment: step;
+  }
+  .step-body h3 {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+  }
+  .step-body p {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── FAQ ── */
+  .faq { margin: 2rem 0; }
+  .faq-item {
+    border-top: 1px solid var(--rule);
+    padding: 1.25rem 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--rule); }
+  .faq-q {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    list-style: none;
+    user-select: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::after {
+    content: '+';
+    font-family: 'DM Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  details[open] .faq-q::after {
+    content: '−';
+  }
+  .faq-a {
+    padding-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    max-width: 640px;
+  }
+  .faq-a p { margin-bottom: 0.6rem; }
+  .faq-a p:last-child { margin-bottom: 0; }
+
+  /* ── CONTACT FORM ── */
+  .contact-section { background: var(--cream); border-top: 1px solid var(--tan); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-intro h2 { margin-bottom: 1rem; }
+  .contact-intro p { font-size: 0.925rem; }
+
+  .contact-detail {
+    display: flex; flex-direction: column; gap: 0.2rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--tan);
+  }
+  .contact-detail-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .contact-detail a {
+    font-size: 0.9rem;
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .contact-detail a:hover { text-decoration: underline; }
+
+  /* Form */
+  .form-card {
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 2rem;
+  }
+  .form-row {
+    margin-bottom: 1.25rem;
+  }
+  label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  label .optional {
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 0.75rem;
+    margin-left: 0.3rem;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--rule);
+    background: var(--warm-white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.15s;
+    appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--teal);
+    background: white;
+  }
+  textarea { resize: vertical; min-height: 100px; }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8578' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    padding-right: 2.25rem;
+  }
+
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 0.85rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .submit-btn:hover { background: #1f5252; }
+  .submit-btn:disabled { background: var(--muted); cursor: not-allowed; }
+
+  #form-success {
+    display: none;
+    padding: 2rem;
+    background: var(--teal-light);
+    border: 1px solid rgba(42,107,107,0.2);
+    border-left: 4px solid var(--teal);
+    text-align: center;
+  }
+  #form-success h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+  #form-success p {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.3);
+    padding: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .three-things { grid-template-columns: 1fr; }
+    .ruling-facts  { grid-template-columns: 1fr; }
+    .contact-grid  { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats    { gap: 1.5rem; }
+    .section, .section-wide .section-inner { padding: 3.5rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></div>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">New Hampshire — DCYF Families</div>
+    <h1>If DCYF issued a finding against you, <em>you may have rights they never told you about.</em></h1>
+    <p class="hero-lead">
+      Between 2020 and 2025, the Division for Children, Youth and Families issued approximately 10,500 "Unfounded with Reasonable Concern" findings — without findings of fact, without conclusions of law, and without telling families they had the right to appeal. A September 2025 ruling changed that. Here's what it means for you.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">~10,500</span>
+        <span class="stat-label">URC findings issued since 2020 without appeal notice</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">Sept. 25</span>
+        <span class="stat-label">2025 ALJ ruling: these findings <em>are</em> appealable</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">$0</span>
+        <span class="stat-label">Cost to reach out and understand your options</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- WHAT IS A URC FINDING -->
+<div class="section fade-up">
+  <div class="eyebrow">Understanding Your Letter</div>
+  <h2>What is an "Unfounded with Reasonable Concern" finding?</h2>
+  <p>
+    When DCYF investigates a family and does not find abuse or neglect, they sometimes close the case with a designation called <strong>"Unfounded with Reasonable Concern"</strong> — often abbreviated URC. On its face, it sounds like a clearance. In practice, it is something more complicated.
+  </p>
+
+  <div class="urc-box">
+    <div class="urc-box-label">What a URC finding typically says</div>
+    <p>The investigation found no evidence of abuse or neglect. However, DCYF identified concerns that were noted in the record. The case is being closed.</p>
+    <p>What it does <em>not</em> say: what those concerns were, whether they are accurate, what standard was used to evaluate them, or that you had the right to challenge them.</p>
+  </div>
+
+  <p>
+    Until a landmark ruling in September 2025, DCYF took the position that URC findings were <strong>final and unreviewable</strong> — meaning families had no formal way to dispute them, correct errors, or clear their record. Thousands of families were told, in effect: the case is closed, there is nothing to appeal, move on.
+  </p>
+  <p>
+    That position has now been rejected by an Administrative Law Judge. The ruling found that URC findings are subject to administrative appeal under New Hampshire law — a ruling with consequences for every family that received one.
+  </p>
+</div>
+
+<!-- THREE THINGS TO KNOW -->
+<div class="section fade-up" style="padding-top: 0;">
+  <div class="eyebrow">Three Things to Know</div>
+  <h2>What the ruling means — in plain terms</h2>
+  <div class="three-things">
+    <div class="thing-card">
+      <div class="thing-num">1</div>
+      <h3>You may have appeal rights DCYF never disclosed</h3>
+      <p>If you received a URC letter and were told there was nothing to appeal, that advice may have been wrong. The September 2025 ruling directly contradicts DCYF's longstanding position.</p>
+    </div>
+    <div class="thing-card">
+      <div class="thing-num">2</div>
+      <h3>Your finding may be legally defective</h3>
+      <p>New Hampshire law requires administrative findings to include findings of fact and conclusions of law. URC letters were issued without either. A finding issued without these requirements may be voidable.</p>
+    </div>
+    <div class="thing-card">
+      <div class="thing-num">3</div>
+      <h3>Time limits may apply — but there are arguments to extend them</h3>
+      <p>Administrative appeals normally have deadlines. However, when an agency actively prevented families from appealing by telling them no appeal existed, there are legal arguments for accepting late filings. This is being actively litigated.</p>
+    </div>
+  </div>
+</div>
+
+<!-- THE RULING -->
+<div class="section-wide ruling-section fade-up">
+  <div class="section-inner">
+    <div class="eyebrow">The September 25, 2025 Ruling</div>
+    <h2>What an ALJ decided — and why it matters</h2>
+
+    <div class="ruling-callout">
+      <p>
+        DCYF's motion to dismiss the administrative appeal was denied. The Administrative Appeals Unit held that Unfounded with Reasonable Concern findings are subject to administrative appeal under RSA 541-A — a category the agency had maintained was entirely unreviewable.
+      </p>
+      <cite>ALJ Zachary Towle — AAU Docket 2025-1149 — September 25, 2025</cite>
+    </div>
+
+    <p>
+      This ruling came in a specific case — but its logic applies broadly. DCYF's argument for dismissal rested on the claim that URC findings aren't "decisions" in a legal sense. The ALJ rejected that argument. If DCYF cannot use that defense in this case, it cannot use it in yours.
+    </p>
+
+    <div class="ruling-facts">
+      <div class="ruling-fact">
+        <div class="ruling-fact-label">What DCYF argued</div>
+        <p>URC findings are internal administrative designations, not formal decisions, and therefore cannot be appealed under state administrative law.</p>
+      </div>
+      <div class="ruling-fact">
+        <div class="ruling-fact-label">What the ALJ ruled</div>
+        <p>DCYF's motion to dismiss was <strong>denied</strong>. The appeal was allowed to proceed on the merits.</p>
+      </div>
+      <div class="ruling-fact">
+        <div class="ruling-fact-label">What this means for prior findings</div>
+        <p>Approximately <strong>10,500 URC findings</strong> were issued between 2020 and 2025. None included findings of fact, conclusions of law, or notice of appeal rights.</p>
+      </div>
+      <div class="ruling-fact">
+        <div class="ruling-fact-label">What RSA 541-A:35 requires</div>
+        <p>Every agency decision in a contested case must be in writing and include <strong>findings of fact and conclusions of law.</strong> URC letters contained neither.</p>
+      </div>
+    </div>
+
+    <p>
+      Three administrative appeals are now pending before the AAU. A parallel federal civil rights case is before the U.S. District Court for the District of New Hampshire. The outcomes of these proceedings will affect how New Hampshire handles URC findings going forward.
+    </p>
+  </div>
+</div>
+
+<!-- WHAT TO DO -->
+<div class="section-wide steps-section fade-up">
+  <div class="section-inner">
+    <div class="eyebrow">What You Can Do</div>
+    <h2>Your options, step by step</h2>
+    <p style="color: var(--ink-soft); margin-bottom: 2rem;">
+      You do not need a lawyer to reach out. We can help you understand whether your situation may be affected and what — if anything — you can do about it.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <div class="step-body">
+          <h3>Locate your URC letter</h3>
+          <p>Find any correspondence from DCYF closing your case with an "Unfounded with Reasonable Concern" or similar designation. The letter will typically reference an assessment or case number. If you no longer have it, you can request records under RSA 91-A (New Hampshire's Right-to-Know law).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <div class="step-body">
+          <h3>Note the date and case number</h3>
+          <p>Write down when the finding was issued, the assessment number if listed, and the DCYF office involved. This information will be needed if you decide to file an appeal or request a records review.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <div class="step-body">
+          <h3>Reach out using the form below</h3>
+          <p>Fill out the short form on this page. You are not committing to anything — just making contact. We will review your situation and respond with information about whether your case may be affected and what options, if any, may be available to you.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-circle">4</div>
+        <div class="step-body">
+          <h3>Understand your options before deciding anything</h3>
+          <p>Filing an administrative appeal is a decision that should be made with full information. We will not pressure you in any direction. Our goal is to make sure you understand your rights — the rights DCYF did not disclose when it closed your case.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section fade-up">
+  <div class="eyebrow">Common Questions</div>
+  <h2>Frequently asked questions</h2>
+
+  <div class="faq">
+
+    <details class="faq-item">
+      <summary class="faq-q">Does this mean DCYF did something wrong in my case?</summary>
+      <div class="faq-a">
+        <p>Not necessarily. "Unfounded with Reasonable Concern" means DCYF did not find abuse or neglect. The legal issue here is procedural: whether the way these findings were issued — without findings of fact, conclusions of law, or appeal notice — complies with state administrative law requirements.</p>
+        <p>A procedurally defective finding is a separate question from whether the underlying concerns were valid. You may have grounds to challenge the finding even if some of DCYF's concerns had a factual basis.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Is it too late to appeal? My letter is from 2021 or 2022.</summary>
+      <div class="faq-a">
+        <p>Possibly not. Administrative appeals normally have time limits, but those limits may be tolled — legally paused — when an agency actively prevented families from appealing by telling them no appeal right existed.</p>
+        <p>The argument being pursued in current litigation is that families who were incorrectly told their findings were unreviewable should not be penalized for relying on that misrepresentation. This issue is unresolved and is being actively litigated. Reach out and we can discuss the specifics of your situation.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Do I need a lawyer to appeal?</summary>
+      <div class="faq-a">
+        <p>No. Administrative appeals before the DHHS Administrative Appeals Unit can be filed pro se — meaning on your own behalf, without an attorney. The process involves filing a written petition and, in some cases, participating in a hearing.</p>
+        <p>That said, having legal guidance can help. If you cannot afford an attorney, New Hampshire Legal Assistance (603-224-3333) offers free civil legal services to eligible residents.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">What exactly is the September 2025 ruling?</summary>
+      <div class="faq-a">
+        <p>On September 25, 2025, Administrative Law Judge Zachary Towle denied DCYF's motion to dismiss an administrative appeal of a URC finding, holding that such findings are subject to appeal under RSA 541-A. The case was brought by a Manchester father whose family received a URC finding following a DCYF investigation in 2024.</p>
+        <p>The ruling is not binding precedent in the way a court decision would be, but it directly contradicts DCYF's longstanding position that URC findings were unreviewable, and provides a legal basis for other families to challenge their own findings.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Will reaching out affect my current or future interactions with DCYF?</summary>
+      <div class="faq-a">
+        <p>We are not DCYF, and reaching out to us has no formal effect on any current or pending DCYF matter. We are private individuals and this is not an official government process.</p>
+        <p>If you have an active open case with DCYF, you may want to consult with an attorney before taking any formal steps, including filing an appeal.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Who is behind this page?</summary>
+      <div class="faq-a">
+        <p>This page is maintained in connection with <em>Becker v. DCYF et al.</em>, Civil No. 1:24-cv-00430-JL-TSM, a federal civil rights case pending in the U.S. District Court for the District of New Hampshire. The plaintiff in that case, Torrence Becker, is a Manchester father who has been pursuing administrative and federal remedies since 2024.</p>
+        <p>This page is not affiliated with DCYF, DHHS, or any government agency. It is an informational resource for New Hampshire families.</p>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section-wide contact-section fade-up" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <div class="contact-intro">
+        <div class="eyebrow">Get in Touch</div>
+        <h2>Tell us about your situation</h2>
+        <p>
+          Fill out the short form and we will get back to you. You are not filing anything official — this is just a first conversation. Everything you share is treated as confidential.
+        </p>
+        <p style="font-size: 0.875rem;">
+          If you prefer, you can email directly rather than using the form. We respond to all inquiries, usually within a few days.
+        </p>
+
+        <div class="contact-detail">
+          <span class="contact-detail-label">Email directly</span>
+          <a href="mailto:[CONTACT-EMAIL]">[CONTACT-EMAIL]</a>
+        </div>
+
+        <div class="contact-detail">
+          <span class="contact-detail-label">Related case record</span>
+          <a href="#" style="color: var(--muted); font-size: 0.8rem;">Becker v. DCYF et al. — Full Case Documentation (password required)</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="form-card" id="form-card">
+          <form id="contact-form" action="https://formspree.io/f/[FORMSPREE-ID]" method="POST">
+
+            <div class="form-row">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" placeholder="First and last name" required>
+            </div>
+
+            <div class="form-row">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="form-row">
+              <label for="phone">Phone number <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="603-555-0100">
+            </div>
+
+            <div class="form-row">
+              <label for="year">Approximately when did you receive your URC finding?</label>
+              <select id="year" name="year" required>
+                <option value="" disabled selected>Select a year</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+                <option>2025</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="county">County <span class="optional">(optional)</span></label>
+              <select id="county" name="county">
+                <option value="" disabled selected>Select a county</option>
+                <option>Belknap</option>
+                <option>Carroll</option>
+                <option>Cheshire</option>
+                <option>Coos</option>
+                <option>Grafton</option>
+                <option>Hillsborough</option>
+                <option>Merrimack</option>
+                <option>Rockingham</option>
+                <option>Strafford</option>
+                <option>Sullivan</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="message">Briefly describe your situation <span class="optional">(optional)</span></label>
+              <textarea id="message" name="message" placeholder="What happened, what DCYF told you, and any questions you have. You do not need to include case numbers or identifying details yet."></textarea>
+            </div>
+
+            <p class="form-note">
+              Your information is used only to respond to your inquiry. It will not be shared with DCYF, DHHS, or any government agency. You can ask us to delete your submission at any time.
+            </p>
+
+            <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
+          </form>
+        </div>
+
+        <div id="form-success">
+          <h3>Message received.</h3>
+          <p>Thank you for reaching out. We will review your situation and respond within a few business days.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>NH Families &amp; DCYF — Your Rights &nbsp;·&nbsp; Informational purposes only. Not legal advice.</span>
+  <span>Related: <a href="#">Becker v. DCYF et al.</a> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
+</footer>
+
+<script>
+  // Reading progress
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('progress').style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Form submit — Formspree AJAX
+  const form = document.getElementById('contact-form');
+  const btn  = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        document.getElementById('form-card').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        alert('Something went wrong. Please try emailing us directly.');
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Something went wrong. Please try emailing us directly.');
+    }
+  });
+</script>
+
+</body>
+</html>
