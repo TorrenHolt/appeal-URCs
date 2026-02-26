@@ -554,22 +554,26 @@
 
   /* ── ANIMATIONS ── */
   .fade-up {
-    opacity: 0;
-    transform: translateY(16px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up.will-animate {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  .fade-up.will-animate.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 <div id="progress"></div>
 
 <!-- NAV -->
-<div class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></div>
-<div style="display:flex; align-items:center; gap:0.25rem;">
-  <a href="nh-families-your-rights.html" class="nav-cta" style="background:transparent; color:var(--muted); font-size:0.6rem; letter-spacing:0.12em; font-family:'DM Mono',monospace; text-transform:uppercase;">Your Rights</a>
-  <a href="#contact" class="nav-cta">Get in Touch</a>
-</div>
+<nav>
+  <div class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></div>
+  <div style="display:flex;align-items:center;gap:0.25rem;">
+    <a href="nh-families-your-rights.html" style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.35rem 0.75rem;transition:color 0.15s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Your Rights</a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </div>
+</nav>
 
 <!-- HERO -->
 <header class="hero">
@@ -595,6 +599,17 @@
     </div>
   </div>
 </header>
+
+<!-- YOUR RIGHTS BANNER -->
+<div style="background: var(--ink); border-bottom: 3px solid var(--red); padding: 2.5rem 2rem;">
+  <div style="max-width: 780px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+    <div>
+      <div style="font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--red); margin-bottom:0.6rem;">Understand the legal detail</div>
+      <div style="font-family:'Lora',serif; font-size:1.2rem; font-weight:700; color:white; line-height:1.3; max-width:480px;">Want to understand the specific laws DCYF violated — and exactly what they were required to tell you?</div>
+    </div>
+    <a href="nh-families-your-rights.html" style="display:inline-flex; align-items:center; gap:0.6rem; background:var(--red); color:white; font-family:'DM Sans',sans-serif; font-size:0.875rem; font-weight:600; padding:0.85rem 1.75rem; text-decoration:none; border-radius:2px; white-space:nowrap; flex-shrink:0; transition:background 0.15s;" onmouseover="this.style.background='#952e20'" onmouseout="this.style.background='var(--red)'">Read: Your Rights &rarr;</a>
+  </div>
+</div>
 
 <!-- WHAT IS A URC FINDING -->
 <div class="section fade-up">
@@ -799,7 +814,7 @@
 
         <div class="contact-detail">
           <span class="contact-detail-label">Email directly</span>
-          <a href="mailto:[CONTACT-EMAIL]">[CONTACT-EMAIL]</a>
+          <a href="/cdn-cgi/l/email-protection#d58e969a9b81949681f89098949c9988">[CONTACT-EMAIL]</a>
         </div>
 
         <div class="contact-detail">
@@ -888,18 +903,30 @@
   <span>Related: <a href="#">Becker v. DCYF et al.</a> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Reading progress
   window.addEventListener('scroll', () => {
     const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
     document.getElementById('progress').style.width = Math.min(pct, 100) + '%';
   }, { passive: true });
 
-  // Fade-up on scroll
+  // Fade-up on scroll — only hide elements that are BELOW the viewport on load
+  const fadeEls = document.querySelectorAll('.fade-up');
+  fadeEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top >= window.innerHeight) {
+      el.classList.add('will-animate');
+    }
+  });
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-up.will-animate').forEach(el => observer.observe(el));
 
   // Form submit — Formspree AJAX
   const form = document.getElementById('contact-form');
@@ -927,11 +954,3 @@
       }
     } catch(err) {
       btn.disabled = false;
-      btn.textContent = 'Send Message';
-      alert('Something went wrong. Please try emailing us directly.');
-    }
-  });
-</script>
-
-</body>
-</html>
