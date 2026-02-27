@@ -744,6 +744,9 @@
         <div class="step-body">
           <h3>Reach out using the form below</h3>
           <p>Fill out the short form on this page. You are not committing to anything — just making contact. We will review your situation and respond with information about whether your case may be affected and what options, if any, may be available to you.</p>
+          <p style="margin-top: 0.75rem; padding: 0.85rem 1rem; background: var(--gold-light); border-left: 3px solid var(--gold); font-size: 0.875rem; color: var(--ink-soft); line-height: 1.65;">
+            <strong style="color: var(--ink);">If you currently have an open DCYF case,</strong> consult with an attorney before taking any formal steps — including filing an administrative appeal of a prior URC finding. Filing while a case is active could affect how that case proceeds. Reaching out through this form is informal and carries no official legal consequence, but decisions about formal action should be made with legal guidance.
+          </p>
         </div>
       </div>
       <div class="step">
@@ -833,7 +836,7 @@
 
         <div class="contact-detail">
           <span class="contact-detail-label">Email directly</span>
-          <a href="mailto:URCINFO2026@gmail.com">URCINFO2026@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#5d080f1e14131b126f6d6f6b1d3a303c3431733e3230"><span class="__cf_email__" data-cfemail="acf9feefe5e2eae39e9c9e9aeccbc1cdc5c082cfc3c1">[email&#160;protected]</span></a>
         </div>
 
         <div class="contact-detail">
@@ -865,6 +868,9 @@
               <label for="year">Approximately when did you receive your URC finding?</label>
               <select id="year" name="year" required>
                 <option value="" disabled selected>Select a year</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
                 <option>2020</option>
                 <option>2021</option>
                 <option>2022</option>
@@ -894,12 +900,16 @@
             </div>
 
             <div class="form-row">
-              <label for="message">Briefly describe your situation <span class="optional">(optional)</span></label>
-              <textarea id="message" name="message" placeholder="What happened, what DCYF told you, and any questions you have. You do not need to include case numbers or identifying details yet."></textarea>
+              <label for="message">Any questions or context <span class="optional">(optional)</span></label>
+              <textarea id="message" name="message" placeholder="Questions you have, or anything you'd like us to know before we respond. Please do not include case numbers, names of individuals involved, or details about what was alleged — those details are best discussed directly once we're in contact."></textarea>
             </div>
 
             <p class="form-note">
               Your information is used only to respond to your inquiry. It will not be shared with DCYF, DHHS, or any government agency. You can ask us to delete your submission at any time.
+            </p>
+
+            <p class="form-note" style="border-top: 1px solid var(--rule); padding-top: 0.85rem; margin-top: 0.85rem; color: var(--ink-soft);">
+              <strong style="color: var(--ink);">Have an active open DCYF case?</strong> Reaching out here is informal and has no official effect. But if you are considering a formal appeal of a prior finding, please speak with an attorney first.
             </p>
 
             <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
@@ -922,7 +932,7 @@
   <span>Related: <span style="color:rgba(255,255,255,0.2);">Becker v. DCYF et al.</span> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Reading progress
   window.addEventListener('scroll', () => {
     const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
@@ -958,11 +968,3 @@
 
     try {
       const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        document.getElementById('form-card').style.display = 'none';
-        document.getElementById('form-success
