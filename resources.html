@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — NH Families & DCYF</title>
+<meta name="description" content="Legal aid, appeal process guidance, relevant statutes, and support contacts for New Hampshire families who received an Unfounded with Reasonable Concern finding from DCYF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --warm-white:  #faf8f4;
+    --cream:       #f3ede2;
+    --tan:         #e8dece;
+    --ink:         #1c1c1a;
+    --ink-soft:    #3d3d38;
+    --muted:       #8a8578;
+    --rule:        #d6cfc3;
+    --red:         #b33a2a;
+    --red-light:   #f5ede9;
+    --gold:        #a07830;
+    --gold-light:  #faf3e4;
+    --teal:        #2a6b6b;
+    --teal-light:  #e8f3f3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── READING PROGRESS ── */
+  #progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    width: 0%; background: var(--red); z-index: 9999;
+    transition: width 0.1s linear;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links-group {
+    display: flex; align-items: center; gap: 0.25rem;
+  }
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    transition: color 0.15s;
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-link.active { color: var(--red); }
+  .nav-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--warm-white);
+    background: var(--red);
+    padding: 0.45rem 1.1rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.15s;
+    margin-left: 0.5rem;
+  }
+  .nav-cta:hover { background: #952e20; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--tan);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--red) 0%, var(--gold) 60%, var(--teal) 100%);
+  }
+  .hero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block; width: 28px; height: 1px;
+    background: var(--red);
+  }
+  .hero h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--red);
+  }
+  .hero-lead {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-toc {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--tan);
+  }
+  .hero-toc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+  .toc-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 0.3rem 0.75rem;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+    border-radius: 1px;
+  }
+  .toc-pill:hover { border-color: var(--red); color: var(--red); }
+  .toc-pill::before { content: '↓'; font-size: 0.7rem; }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .section + .section {
+    padding-top: 0;
+  }
+  .section-divider {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .section-wide {
+    max-width: 100%;
+    padding-left: 0; padding-right: 0;
+  }
+  .section-wide .section-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block; width: 20px; height: 1px;
+    background: var(--rule);
+  }
+
+  h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  h2 em { font-style: italic; color: var(--red); }
+
+  h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
+  p { color: var(--ink-soft); line-height: 1.8; margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  a { color: var(--teal); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── RESOURCE CARDS ── */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+  .resource-card {
+    border: 1px solid var(--rule);
+    background: white;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .resource-card-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .resource-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  .resource-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 0;
+  }
+  .resource-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--rule);
+  }
+  .resource-card-meta a {
+    font-size: 0.8rem;
+    color: var(--teal);
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .resource-card-meta a::before { content: '→'; font-family: 'DM Mono', monospace; font-size: 0.7rem; }
+  .resource-card-meta a:hover { text-decoration: underline; }
+  .resource-card-phone {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+  }
+  .resource-card.featured {
+    border-color: rgba(42,107,107,0.3);
+    border-left: 4px solid var(--teal);
+  }
+  .resource-card.featured .resource-card-tag { color: var(--teal); }
+
+  /* ── STATUTE CARDS ── */
+  .statute-list {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border: 1px solid var(--rule);
+    background: var(--rule);
+  }
+  .statute-item {
+    background: white;
+    padding: 1.5rem 1.75rem;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .statute-cite {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--red);
+    line-height: 1.5;
+    padding-top: 0.15rem;
+  }
+  .statute-body h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+    color: var(--ink);
+  }
+  .statute-body p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+  .statute-body a {
+    font-size: 0.8rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+    color: var(--teal);
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    margin-top: 0.5rem;
+  }
+  .statute-body a::before { content: '→'; }
+
+  /* ── PROCESS STEPS ── */
+  .steps { margin: 2rem 0; }
+  .step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+    align-items: start;
+  }
+  .step-circle {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .step-body h3 {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+  }
+  .step-body p {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .step-body a { color: var(--teal); font-weight: 500; }
+
+  /* ── DOCUMENT ROWS ── */
+  .doc-list {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border: 1px solid var(--rule);
+    background: var(--rule);
+  }
+  .doc-item {
+    background: white;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .doc-item-left { flex: 1; min-width: 0; }
+  .doc-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .doc-title {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .doc-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+    line-height: 1.5;
+  }
+  .doc-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+  }
+  .doc-link::before { content: '→'; }
+  .doc-link:hover { text-decoration: underline; }
+  .doc-link.pending {
+    color: var(--muted);
+    cursor: default;
+  }
+  .doc-link.pending::before { content: ''; }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: var(--gold-light);
+    border: 1px solid rgba(160,120,48,0.2);
+    border-left: 4px solid var(--gold);
+    padding: 1.75rem 2rem;
+    margin: 2rem 0;
+    border-radius: 0 2px 2px 0;
+  }
+  .info-box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .info-box p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+  }
+  .info-box p + p { margin-top: 0.6rem; }
+
+  /* ── APPEAL STEPS SECTION ── */
+  .steps-section { background: var(--teal-light); }
+  .steps-section h2 { color: var(--teal); }
+  .steps-section .eyebrow { color: var(--teal); }
+  .steps-section .eyebrow::before { background: var(--teal); opacity: 0.4; }
+
+  /* ── RECORDS GUIDE ── */
+  .two-col-note {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+  .two-col-note-cell {
+    background: white;
+    padding: 1.5rem 1.75rem;
+  }
+  .two-col-note-cell-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .two-col-note-cell h3 { font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--ink); }
+  .two-col-note-cell p { font-size: 0.825rem; color: var(--muted); line-height: 1.65; margin: 0; }
+
+  .sample-block {
+    background: var(--cream);
+    border: 1px solid var(--tan);
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem 1.75rem;
+    margin: 1.25rem 0;
+    border-radius: 0 2px 2px 0;
+  }
+  .sample-block-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.85rem;
+  }
+  .sample-block p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 0.4rem;
+  }
+  .sample-block p:last-child { margin-bottom: 0; }
+  .sample-block ul { list-style: none; margin: 0.4rem 0 0.4rem 0; padding: 0; }
+  .sample-block ul li {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .sample-block ul li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
+
+  .mistakes-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border: 1px solid var(--rule); }
+  .mistakes-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--rule);
+    font-weight: 400;
+    background: white;
+  }
+  .mistakes-table td { padding: 1rem; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.65; background: white; }
+  .mistakes-table td:first-child { color: var(--red); font-size: 0.825rem; width: 42%; }
+  .mistakes-table td:last-child { font-size: 0.825rem; color: var(--ink-soft); }
+  .mistakes-table tr:last-child td { border-bottom: none; }
+
+  @media (max-width: 720px) {
+    .two-col-note { grid-template-columns: 1fr; }
+    .mistakes-table, .mistakes-table thead, .mistakes-table tbody, .mistakes-table tr, .mistakes-table td { display: block; width: 100%; }
+    .mistakes-table thead { display: none; }
+    .mistakes-table td:first-child { width: 100%; color: var(--red); font-weight: 600; padding-bottom: 0.25rem; }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.3);
+    padding: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .resource-grid { grid-template-columns: 1fr; }
+    .statute-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .doc-item { flex-direction: column; gap: 0.5rem; }
+    .section, .section-wide .section-inner { padding: 3.5rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up { transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.will-animate { opacity: 0; transform: translateY(16px); }
+  .fade-up.will-animate.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── SECTION ANCHOR OFFSET ── */
+  .section-anchor { scroll-margin-top: 80px; }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></a>
+  <div class="nav-links-group">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="nh-families-your-rights.html" class="nav-link">Your Rights</a>
+    <a href="resources.html" class="nav-link active">Resources</a>
+    <a href="index.html#contact" class="nav-cta">Sign Up for Updates</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Resources — NH DCYF Families</div>
+    <h1>What to do next — and <em>who can help you do it.</em></h1>
+    <p class="hero-lead">
+      Legal aid contacts, the appeal process step by step, the statutes that govern your case, and the court documents behind this effort. Everything on this page is free to use and requires no attorney.
+    </p>
+    <div class="hero-toc">
+      <div class="hero-toc-label">On this page</div>
+      <a href="#legal-aid" class="toc-pill">Free legal help</a>
+      <a href="#how-to-appeal" class="toc-pill">How to appeal</a>
+      <a href="#records" class="toc-pill">Requesting your records</a>
+      <a href="#statutes" class="toc-pill">Relevant statutes</a>
+      <a href="#documents" class="toc-pill">Case documents</a>
+    </div>
+  </div>
+</header>
+
+<!-- LEGAL AID -->
+<div class="section fade-up section-anchor" id="legal-aid">
+  <div class="eyebrow">Free & Low-Cost Legal Help</div>
+  <h2>Finding a lawyer for this <em>is genuinely difficult.</em></h2>
+  <p>
+    Administrative appeals of DCYF findings sit in a narrow area of law — not quite family court, not quite standard administrative law — and most general practitioners won't take them. Legal aid organizations are the most realistic starting point for most families, but they are stretched thin and eligibility-gated. This list is honest about what's actually available, not what should be available.
+  </p>
+  <p>
+    If you cannot find an attorney, the process can be done without one. But the later steps — especially if DCYF contests timeliness or files motions — become significantly harder to navigate alone. Keep trying.
+  </p>
+
+  <div class="resource-grid">
+
+    <div class="resource-card featured">
+      <div class="resource-card-tag">Free civil legal services</div>
+      <h3>New Hampshire Legal Assistance</h3>
+      <p>NHLA provides free civil legal help to low-income New Hampshire residents. Family law, administrative appeals, and DCYF-related matters are within their scope. Intake is handled through 603 Legal Aid — call or apply online through them to find out if you qualify for NHLA representation.</p>
+      <div class="resource-card-meta">
+        <span class="resource-card-phone">1-800-639-5290 (via 603 Legal Aid intake)</span>
+        <a href="https://www.nhla.org" target="_blank" rel="noopener">nhla.org</a>
+      </div>
+    </div>
+
+    <div class="resource-card featured">
+      <div class="resource-card-tag">Free civil legal services · Statewide intake</div>
+      <h3>603 Legal Aid</h3>
+      <p>603 Legal Aid is the statewide centralized intake point for all free civil legal services in New Hampshire — formed in 2021 when LARC and the NH Bar's Pro Bono program merged. If you're not sure where to start, call here first. They provide advice directly and refer appropriate cases to NHLA and other programs.</p>
+      <div class="resource-card-meta">
+        <span class="resource-card-phone">1-800-639-5290 &nbsp;·&nbsp; 603-224-3333</span>
+        <a href="https://www.603legalaid.org" target="_blank" rel="noopener">603legalaid.org</a>
+      </div>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-card-tag">Lawyer referral</div>
+      <h3>NH Bar Association Lawyer Referral Service</h3>
+      <p>If you can afford an attorney, the NHBA referral service matches you with a licensed NH attorney for a reduced-fee initial consultation. Ask specifically for someone familiar with DHHS administrative proceedings.</p>
+      <div class="resource-card-meta">
+        <span class="resource-card-phone">603-229-0002</span>
+        <a href="https://www.nhbar.org/for-the-public/lawyer-referral-service/" target="_blank" rel="noopener">nhbar.org — Referral Service</a>
+      </div>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-card-tag">Pro se support</div>
+      <h3>NH Judicial Branch Self-Help Center</h3>
+      <p>The Self-Help Center provides forms, procedural guidance, and staff assistance for people representing themselves in court. If your case proceeds to judicial review, this is a useful starting point for understanding court procedures.</p>
+      <div class="resource-card-meta">
+        <a href="https://www.courts.nh.gov/self-help" target="_blank" rel="noopener">courts.nh.gov/self-help</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="info-box">
+    <div class="info-box-label">A note on eligibility and capacity</div>
+    <p>Free legal aid programs use income guidelines to determine eligibility, and their capacity is limited. If you've been told you don't qualify, or been turned away, try the other organizations on this list — eligibility rules and availability vary. 603 Legal Aid can help map all your options at once.</p>
+    <p>If you've exhausted the legal aid options and can't afford a private attorney, document that you tried. It matters if your case ever reaches a point where the question of whether you had meaningful access to counsel becomes relevant.</p>
+    <p>If you have an active open case with DCYF, speak with an attorney before taking any formal steps on a prior finding.</p>
+  </div>
+
+</div>
+
+<div class="section-divider"></div>
+
+<!-- HOW TO APPEAL -->
+<div class="section-wide steps-section fade-up section-anchor" id="how-to-appeal">
+  <div class="section-inner">
+    <div class="eyebrow">The Appeal Process</div>
+    <h2>How to file an administrative appeal</h2>
+    <p>
+      Administrative appeals of DCYF findings go to the DHHS Administrative Appeals Unit (AAU). The September 2025 ALJ ruling confirmed that URC findings are subject to appeal under RSA 541-A. Here is what that process looks like.
+    </p>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-circle">1</div>
+        <div class="step-body">
+          <h3>Gather your documentation</h3>
+          <p>Locate your original URC finding letter. If you no longer have it, you need to request your case file from DCYF — this is its own process with specific requirements. See the <a href="#records">Requesting Your Records</a> section below for the correct procedure, required form, and what to ask for.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-circle">2</div>
+        <div class="step-body">
+          <h3>Complete the official Appeal Request Form</h3>
+          <p>The AAU has an official Appeal Request Form — use it rather than a freeform letter. The form asks you to identify who you are, the finding you are appealing, the date of the finding, and a brief statement of why you believe it should be reviewed. You do not need to present your full legal argument at this stage. Submit the form along with a copy of your Notice of Decision.</p>
+          <p style="margin-top:0.65rem;"><strong>Time limit:</strong> Generally, you must file within 30 days of the date on your Notice of Decision. Read your Notice carefully — it will state the specific deadline that applies to your case. If your finding is older, see Step 4 below.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-circle">3</div>
+        <div class="step-body">
+          <h3>File with the Administrative Appeals Unit</h3>
+          <p>Submit your completed Appeal Request Form and copy of your Notice of Decision to the AAU. You can file by mail, email, or fax:</p>
+          <ul style="margin: 0.65rem 0 0.65rem 1.25rem; color: var(--ink-soft); font-size: 0.875rem; line-height:1.9;">
+            <li><strong>Mail:</strong> DHHS Administrative Appeals Unit, 105 Pleasant Street, Concord, NH 03301 — send by certified mail and keep your receipt</li>
+            <li><strong>Email:</strong> <a href="mailto:dhhs.aau@dhhs.nh.gov">dhhs.aau@dhhs.nh.gov</a> — email creates a timestamp and is fastest</li>
+            <li><strong>Fax:</strong> 603-271-8422</li>
+          </ul>
+          <p>The AAU can also be reached by phone at <strong>603-271-4292</strong> (toll-free: 1-800-852-3345 ext. 14292) if you have questions about the process.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-circle">4</div>
+        <div class="step-body">
+          <h3>Be aware of the timeliness issue if your finding is older</h3>
+          <p>If your finding is from 2021, 2022, or earlier, DCYF may argue the appeal is untimely. There is active litigation over whether the normal time limits apply to families who were told no appeal right existed — this question has not been finally resolved. This is the point in the process where legal guidance matters most. An attorney familiar with NH administrative law can advise you on whether and how to address timeliness given your specific circumstances.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-circle">5</div>
+        <div class="step-body">
+          <h3>If DCYF moves to dismiss, you have the right to respond</h3>
+          <p>DCYF has previously moved to dismiss appeals of URC findings on jurisdictional grounds. If they do so in your case, you have the right to file a written response before the AAU rules. The September 2025 ruling in the Becker case addressed this exact argument and is a public record — it is listed in the Case Documents section below. What that ruling means for your specific situation is a question for an attorney.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-circle">6</div>
+        <div class="step-body">
+          <h3>If the AAU rules against you, the process continues</h3>
+          <p>An adverse AAU decision can be challenged by petition for a writ of certiorari to the New Hampshire Supreme Court under RSA 541:6 — not the Superior Court. This is a technical legal proceeding, and the pathway differs from a standard court appeal. Federal constitutional arguments — including due process claims — may also be available as a separate avenue. This is where legal counsel becomes especially important; filing in the wrong court or missing a step forfeits the right to further review.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- REQUESTING RECORDS -->
+<div class="section fade-up section-anchor" id="records">
+  <div class="eyebrow">Getting Your Case File</div>
+  <h2>How to request your records <em>from DCYF</em></h2>
+  <p>
+    Child welfare records are confidential under RSA 170-G:8-a, which means the standard Right-to-Know process does not apply. You have to follow a separate internal procedure. Using the wrong process is the most common reason requests stall for months.
+  </p>
+
+  <div class="two-col-note">
+    <div class="two-col-note-cell">
+      <div class="two-col-note-cell-label">For your family's case file</div>
+      <h3>Use DCYF's internal request process</h3>
+      <p>Case files are confidential records. RSA 91-A (Right-to-Know) does not apply. You must use the DCYF records request form with ID verification.</p>
+    </div>
+    <div class="two-col-note-cell">
+      <div class="two-col-note-cell-label">For general agency records</div>
+      <h3>Use the Right-to-Know law (RSA 91-A)</h3>
+      <p>Policies, training materials, statistics — records that don't identify individual families — can be requested via RSA 91-A. Send to DHHS Legal at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="610d0406000d21050909124f0f094f060e17">[email&#160;protected]</a>. Verify this address before sending.</p>
+    </div>
+  </div>
+
+  <div class="steps" style="margin-top: 2.5rem;">
+
+    <div class="step">
+      <div class="step-circle">1</div>
+      <div class="step-body">
+        <h3>Get and complete the official form</h3>
+        <p>DCYF requires their specific records request form (sometimes called Form 2765). Email the DCYF district office that handled your case and ask for it, or check the DCYF website under "Records & Reports." They will not process a request without it, even a detailed letter. Include a clear copy of your ID (front and back), and if requesting records for a child, documentation of your parental relationship.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-circle">2</div>
+      <div class="step-body">
+        <h3>Be specific about what you want</h3>
+        <p>Do not write "my file." List everything explicitly so the agency cannot later claim your request was too broad — and ask specifically for audio and video recordings, which are often omitted if not named.</p>
+
+        <div class="sample-block">
+          <div class="sample-block-label">Sample request language</div>
+          <p>I am requesting the complete case file for my children: [Child full name, date of birth].</p>
+          <p>This includes but is not limited to:</p>
+          <ul>
+            <li>All case notes and contact logs</li>
+            <li>All reports and assessments</li>
+            <li>All correspondence (emails, letters, memos)</li>
+            <li>All audio and video recordings of any interviews, meetings, or phone calls</li>
+            <li>All BRIDGES system data related to my family</li>
+            <li>All safety plans, incident reports, and notices of decision</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-circle">3</div>
+      <div class="step-body">
+        <h3>Wait — and follow up at the right deadline</h3>
+        <p>The response deadline depends on whether your case is open or closed. <strong>If your case is still open</strong>, DCYF has up to 30 days from receipt of your request to respond. <strong>If your case is closed</strong>, the deadline extends to 60 days. You will not receive status updates unless you ask. If you haven't heard anything by your applicable deadline, send a written follow-up requesting a status update. Keep a copy of everything you send.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-circle">4</div>
+      <div class="step-body">
+        <h3>Review carefully — then follow up on anything missing</h3>
+        <p>When records arrive, check them against the contact logs. If a log entry references a recording or document that wasn't included, write back immediately and ask for it specifically in writing.</p>
+
+        <div class="sample-block">
+          <div class="sample-block-label">Sample follow-up language</div>
+          <p>Subject: Follow-up on records request – [Your Name]</p>
+          <p>I received the records from my request on [date]. However, the following items referenced in the contact logs were not included:</p>
+          <ul>
+            <li>Audio recording of phone call on [date] with [worker name]</li>
+            <li>[Any other missing items]</li>
+          </ul>
+          <p>Please confirm whether these recordings exist. If they do, please provide them. If they do not exist or cannot be provided, please explain in writing why they are unavailable.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 style="font-family:'Lora',serif; font-size:1rem; font-weight:600; color:var(--ink); margin: 2.5rem 0 1rem;">Common mistakes</h3>
+  <table class="mistakes-table">
+    <thead>
+      <tr>
+        <th>Mistake</th>
+        <th>What to do instead</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Using RSA 91-A to request your case file</td>
+        <td>Use DCYF's internal process. Right-to-Know does not apply to confidential child welfare records.</td>
+      </tr>
+      <tr>
+        <td>Not asking specifically for audio recordings</td>
+        <td>Be explicit. Ask for "all audio and video recordings" in writing. They are frequently omitted if not named.</td>
+      </tr>
+      <tr>
+        <td>Assuming they sent everything</td>
+        <td>Cross-reference what you receive against the contact logs. Follow up in writing on anything missing.</td>
+      </tr>
+      <tr>
+        <td>Not keeping copies of your request and correspondence</td>
+        <td>Save every email, form, and response. You may need them later.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <div class="info-box-label">If you encounter problems</div>
+    <p><strong>No response by your deadline</strong> — If your case is open, follow up in writing after 30 days. If your case is closed, follow up after 60 days. In either case, write to the person who acknowledged your request. If no response, escalate to a supervisor in writing.</p>
+    <p><strong>Denial of access</strong> — Request a written explanation citing the specific statutory exemption they are relying on. If the denial involves a finding, you may have appeal rights through the AAU.</p>
+    <p><strong>Missing audio recordings</strong> — Request a written explanation. If the agency claims recordings don't exist, ask in writing for documentation of their records retention policy and any destruction logs.</p>
+  </div>
+
+</div>
+
+<div class="section-divider"></div>
+
+<!-- STATUTES -->
+<div class="section fade-up section-anchor" id="statutes">
+  <div class="eyebrow">Statutory Framework</div>
+  <h2>The laws that govern your case</h2>
+  <p>
+    These are the New Hampshire statutes most directly relevant to challenging a URC finding. The full text of each is available through the NH General Court's online database, linked below.
+  </p>
+
+  <div class="statute-list">
+
+    <div class="statute-item">
+      <div class="statute-cite">RSA 541-A:35</div>
+      <div class="statute-body">
+        <h3>Required contents of a final decision</h3>
+        <p>Every final adverse decision must include findings of fact and conclusions of law, separately stated. This is the provision that URC letters systematically violated — they contained neither.</p>
+        <a href="https://www.gencourt.state.nh.us/rsa/html/LV/541-A/541-A-35.htm" target="_blank" rel="noopener">RSA 541-A:35 — Full text</a>
+      </div>
+    </div>
+
+    <div class="statute-item">
+      <div class="statute-cite">RSA 541-A:31</div>
+      <div class="statute-body">
+        <h3>Right to appeal a contested case decision</h3>
+        <p>Any party to a contested case adversely affected by a final decision has the right to appeal. This is the statutory basis for administrative review of DCYF findings — the right DCYF told families didn't exist.</p>
+        <a href="https://www.gencourt.state.nh.us/rsa/html/LV/541-A/541-A-31.htm" target="_blank" rel="noopener">RSA 541-A:31 — Full text</a>
+      </div>
+    </div>
+
+    <div class="statute-item">
+      <div class="statute-cite">RSA 170-G:8-d</div>
+      <div class="statute-body">
+        <h3>Access to DCYF case records</h3>
+        <p>Authorizes individuals to request records related to DCYF investigations involving themselves or their family. This is how you obtain documentation of your own finding if your letter is lost or incomplete.</p>
+        <a href="https://www.gencourt.state.nh.us/rsa/html/XII/170-G/170-G-8-d.htm" target="_blank" rel="noopener">RSA 170-G:8-d — Full text</a>
+      </div>
+    </div>
+
+    <div class="statute-item">
+      <div class="statute-cite">RSA 169-C:3</div>
+      <div class="statute-body">
+        <h3>Definitions — Child Protection Act</h3>
+        <p>Defines key terms used in DCYF investigations, including "founded," "unfounded," and the classification categories that determine how a finding is recorded and what consequences follow.</p>
+        <a href="https://www.gencourt.state.nh.us/rsa/html/XII/169-C/169-C-3.htm" target="_blank" rel="noopener">RSA 169-C:3 — Full text</a>
+      </div>
+    </div>
+
+    <div class="statute-item">
+      <div class="statute-cite">RSA 541:6</div>
+      <div class="statute-body">
+        <h3>Judicial review of AAU decisions</h3>
+        <p>If the Administrative Appeals Unit rules against you, judicial review of a DHHS fair hearing decision is obtained by petition for a writ of certiorari to the New Hampshire Supreme Court under RSA 541:6 — not by appeal to the Superior Court. This is a technical process where legal counsel is strongly advisable.</p>
+        <a href="https://www.gencourt.state.nh.us/rsa/html/LV/541/541-6.htm" target="_blank" rel="noopener">RSA 541:6 — Full text</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="section-divider"></div>
+
+<!-- DOCUMENTS -->
+<div class="section fade-up section-anchor" id="documents">
+  <div class="eyebrow">Case Documents</div>
+  <h2>The record behind this effort</h2>
+  <p>
+    These are the primary legal documents from <em>Becker v. DCYF et al.</em> and related administrative proceedings that established the legal arguments described on this site. They are public records and can be cited in your own proceedings.
+  </p>
+
+  <div class="doc-list">
+
+    <div class="doc-item">
+      <div class="doc-item-left">
+        <div class="doc-type">AAU Ruling — September 25, 2025</div>
+        <div class="doc-title">ALJ Towle — Order Denying DCYF's Motion to Dismiss</div>
+        <div class="doc-sub">The foundational ruling holding that URC findings are subject to administrative appeal under RSA 541-A. The direct counter to DCYF's jurisdictional argument.</div>
+      </div>
+      <span class="doc-link pending">Coming soon</span>
+    </div>
+
+    <div class="doc-item">
+      <div class="doc-item-left">
+        <div class="doc-type">PACER — Live Docket</div>
+        <div class="doc-title">Federal Case Docket — 1:24-cv-00430</div>
+        <div class="doc-sub">Full docket available through the federal PACER system. Free registration required; most documents cost $0.10/page.</div>
+      </div>
+      <a href="https://www.pacer.gov" target="_blank" rel="noopener" class="doc-link">PACER.gov</a>
+    </div>
+
+    <div class="doc-item">
+      <div class="doc-item-left">
+        <div class="doc-type">NH General Court</div>
+        <div class="doc-title">RSA 541-A — Administrative Procedure Act (Full Text)</div>
+        <div class="doc-sub">The complete statute governing all NH administrative proceedings, including DCYF's decision-making process and your right to appeal.</div>
+      </div>
+      <a href="https://www.gencourt.state.nh.us/rsa/html/LV/541-A/541-A-mrg.htm" target="_blank" rel="noopener" class="doc-link">View statute</a>
+    </div>
+
+  </div>
+
+  <div class="info-box">
+    <div class="info-box-label">Document in progress</div>
+    <p>The AAU ruling will be linked here once it has been prepared for public distribution. If you need it before then for purposes of your own appeal, <a href="index.html#contact" style="color: var(--gold); font-weight:500;">reach out directly</a> and we can provide it.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>NH Families &amp; DCYF — Your Rights &nbsp;·&nbsp; Informational purposes only. Not legal advice.</span>
+  <span>Related: <span style="color:rgba(255,255,255,0.2);">Becker v. DCYF et al.</span> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Reading progress
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('progress').style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+
+  // Fade-up on scroll
+  const fadeEls = document.querySelectorAll('.fade-up');
+  fadeEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top >= window.innerHeight) {
+      el.classList.add('will-animate');
+    }
+  });
