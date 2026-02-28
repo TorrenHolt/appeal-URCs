@@ -38,7 +38,7 @@
 
   /* ── READING PROGRESS ── */
   #progress {
-    position: fixed; top: 0; left: 0; height: 3px;
+    position: absolute; bottom: 0; left: 0; height: 3px;
     width: 0%; background: var(--red); z-index: 9999;
     transition: width 0.1s linear;
   }
@@ -581,10 +581,9 @@
 </style>
 </head>
 <body>
-<div id="progress"></div>
-
 <!-- NAV -->
 <nav>
+  <div id="progress"></div>
   <a href="index.html" class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></a>
   <div class="nav-links-group">
     <a href="index.html" class="nav-link active">Home</a>
@@ -689,31 +688,10 @@
     </div>
 
     <p>
-      This ruling came in a specific case — but its logic applies broadly. DCYF's argument for dismissal rested on the claim that URC findings aren't "decisions" in a legal sense. The ALJ rejected that argument. If DCYF cannot use that defense in this case, it cannot use it in yours.
+      This ruling came in a specific case — but its logic applies broadly. DCYF's argument for dismissal rested on the claim that URC findings aren't "decisions" in a legal sense. The ALJ rejected that argument. If DCYF cannot use that defense in this case, it cannot use it in yours. Three administrative appeals are now pending before the AAU alongside a parallel federal civil rights case.
     </p>
 
-    <div class="ruling-facts">
-      <div class="ruling-fact">
-        <div class="ruling-fact-label">What DCYF argued</div>
-        <p>URC findings are internal administrative designations, not formal decisions, and therefore cannot be appealed under state administrative law.</p>
-      </div>
-      <div class="ruling-fact">
-        <div class="ruling-fact-label">What the ALJ ruled</div>
-        <p>DCYF's motion to dismiss was <strong>denied</strong>. The appeal was allowed to proceed on the merits.</p>
-      </div>
-      <div class="ruling-fact">
-        <div class="ruling-fact-label">What this means for prior findings</div>
-        <p>Approximately <strong>10,500 URC findings</strong> were issued between 2020 and 2025. None included findings of fact, conclusions of law, or notice of appeal rights.</p>
-      </div>
-      <div class="ruling-fact">
-        <div class="ruling-fact-label">What RSA 541-A:35 requires</div>
-        <p>Every agency decision in a contested case must be in writing and include <strong>findings of fact and conclusions of law.</strong> URC letters contained neither.</p>
-      </div>
-    </div>
-
-    <p>
-      Three administrative appeals are now pending before the AAU. A parallel federal civil rights case is before the U.S. District Court for the District of New Hampshire. The outcomes of these proceedings will affect how New Hampshire handles URC findings going forward.
-    </p>
+    <a href="nh-families-your-rights.html" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.5rem; font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--red); text-decoration:none; border-bottom:1px solid rgba(179,58,42,0.3); padding-bottom:0.2rem; transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='rgba(179,58,42,0.3)'">The full legal breakdown — what DCYF was required to do, and didn't &rarr;</a>
   </div>
 </div>
 
@@ -743,8 +721,8 @@
       <div class="step">
         <div class="step-circle">3</div>
         <div class="step-body">
-          <h3>Reach out using the form below</h3>
-          <p>Fill out the short form on this page. You are not committing to anything — just making contact. We will review your situation and respond with information about whether your case may be affected and what options, if any, may be available to you.</p>
+          <h3>Sign up for updates</h3>
+          <p>Use the form below to stay informed as this litigation develops. You are not committing to anything — just staying in the loop. If you want to reach out directly with questions, you can do that too, but there is no obligation and no expectation of a case review.</p>
           <p style="margin-top: 0.75rem; padding: 0.85rem 1rem; background: var(--gold-light); border-left: 3px solid var(--gold); font-size: 0.875rem; color: var(--ink-soft); line-height: 1.65;">
             <strong style="color: var(--ink);">If you currently have an open DCYF case,</strong> consult with an attorney before taking any formal steps — including filing an administrative appeal of a prior URC finding. Filing while a case is active could affect how that case proceeds. Reaching out through this form is informal and carries no official legal consequence, but decisions about formal action should be made with legal guidance.
           </p>
@@ -780,16 +758,14 @@
     <details class="faq-item">
       <summary class="faq-q">Is it too late to appeal? My letter is from 2021 or 2022.</summary>
       <div class="faq-a">
-        <p>Possibly not. Administrative appeals normally have time limits, but those limits may be tolled — legally paused — when an agency actively prevented families from appealing by telling them no appeal right existed.</p>
-        <p>The argument being pursued in current litigation is that families who were incorrectly told their findings were unreviewable should not be penalized for relying on that misrepresentation. This issue is unresolved and is being actively litigated. Reach out and we can discuss the specifics of your situation.</p>
+        <p>Possibly not — there are legal arguments for accepting late filings when an agency actively prevented families from appealing by telling them no appeal right existed. This is unresolved and actively being litigated. The <a href="nh-families-your-rights.html#late-appeal" style="color:var(--teal);">Your Rights page</a> covers this in detail, including the specific legal arguments and what they depend on.</p>
       </div>
     </details>
 
     <details class="faq-item">
       <summary class="faq-q">Do I need a lawyer to appeal?</summary>
       <div class="faq-a">
-        <p>No. Administrative appeals before the DHHS Administrative Appeals Unit can be filed pro se — meaning on your own behalf, without an attorney. The process involves filing a written petition and, in some cases, participating in a hearing.</p>
-        <p>That said, having legal guidance can help. If you cannot afford an attorney, New Hampshire Legal Assistance (603-224-3333) offers free civil legal services to eligible residents.</p>
+        <p>No — AAU appeals can be filed pro se. That said, legal guidance matters at key points, especially on timeliness. The <a href="resources.html#legal-aid" style="color:var(--teal);">Resources page</a> covers free and low-cost legal help, including New Hampshire Legal Assistance (603-224-3333).</p>
       </div>
     </details>
 
@@ -829,10 +805,10 @@
         <div class="eyebrow">Stay Informed</div>
         <h2>Sign up for updates</h2>
         <p>
-          Sign up for updates — and optionally tell us whether a URC finding affected your family. We're documenting how widespread this is.
+          Sign up to stay informed as this litigation develops — and optionally tell us whether a URC finding affected your family. We're documenting how widespread this is.
         </p>
         <p style="font-size: 0.875rem;">
-          Questions about the case or the appeal process — <a href="/cdn-cgi/l/email-protection#acf9feefe5e2eae39e9c9e9aeccbc1cdc5c082cfc3c1" style="color: var(--teal);">email us</a> and we'll point you toward the right resources.
+          If you have questions about the case or the appeal process, feel free to <a href="/cdn-cgi/l/email-protection#acf9feefe5e2eae39e9c9e9aeccbc1cdc5c082cfc3c1" style="color: var(--teal);">email us</a> — we'll point you toward the right resources.
         </p>
 
         <div class="contact-detail">
