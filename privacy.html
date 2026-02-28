@@ -4,175 +4,238 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — NH Families & DCYF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
   <style>
-    /* ── Base reset & tokens ───────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:      #1a1a1a;
-      --muted:    #555;
-      --rule:     #d8d8d8;
-      --accent:   #1a3a5c;
-      --accent-lt:#e8eef5;
-      --warn-bg:  #fdf6e3;
-      --warn-bdr: #c8a84b;
-      --bg:       #ffffff;
-      --max:      720px;
-      --sans:     'Georgia', 'Times New Roman', serif; /* matches civic/legal tone */
-      --mono:     'Courier New', monospace;
+      --warm-white:  #faf8f4;
+      --cream:       #f3ede2;
+      --ink:         #1c1c1a;
+      --ink-soft:    #3d3d38;
+      --muted:       #8a8578;
+      --rule:        #d6cfc3;
+      --red:         #b33a2a;
+      --red-light:   #f5ede9;
+      --gold:        #a07830;
+      --teal:        #2a6b6b;
+      --teal-light:  #e8f3f3;
+      --warn-bg:     #fdf6e3;
+      --warn-bdr:    #c8a84b;
     }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
 
     body {
-      font-family: var(--sans);
-      background: var(--bg);
+      background: var(--warm-white);
       color: var(--ink);
-      font-size: 1rem;
+      font-family: 'DM Sans', system-ui, sans-serif;
       line-height: 1.75;
+      overflow-x: hidden;
     }
 
-    /* ── Nav (matches site) ────────────────────────────────── */
+    /* ── READING PROGRESS ── */
+    #progress {
+      position: fixed; top: 0; left: 0; height: 3px;
+      width: 0%; background: var(--red); z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── NAV ── */
     nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--warm-white);
       border-bottom: 1px solid var(--rule);
-      padding: 0.85rem 1.5rem;
+      padding: 0 2rem;
+      height: 56px;
       display: flex;
       align-items: center;
-      gap: 2rem;
-      font-size: 0.875rem;
+      justify-content: space-between;
     }
-    nav .brand {
-      font-weight: bold;
-      color: var(--accent);
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
       text-decoration: none;
       white-space: nowrap;
     }
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
+    .nav-logo span { color: var(--red); }
+    .nav-links-group {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
     }
-    nav a:hover { color: var(--accent); }
-    nav .spacer { flex: 1; }
-
-    /* ── Page layout ────────────────────────────────────────── */
-    main {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
-    }
-
-    /* ── Header block ───────────────────────────────────────── */
-    .page-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
+    .nav-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 0.5rem;
+      text-decoration: none;
+      padding: 0.4rem 0.75rem;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-link.active { color: var(--red); }
+    .nav-cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--warm-white);
+      background: var(--red);
+      padding: 0.4rem 1rem;
+      text-decoration: none;
+      margin-left: 0.5rem;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: #952e20; }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
     }
     h1 {
-      font-size: 2rem;
-      font-weight: normal;
-      color: var(--accent);
-      line-height: 1.25;
-      margin-bottom: 0.5rem;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
     }
     .subtitle {
+      font-size: 1rem;
       color: var(--muted);
-      font-size: 0.95rem;
+      line-height: 1.65;
       margin-bottom: 2.5rem;
       padding-bottom: 2rem;
       border-bottom: 1px solid var(--rule);
     }
 
-    /* ── Callout box ────────────────────────────────────────── */
+    /* ── CALLOUT ── */
     .callout {
       background: var(--warn-bg);
       border-left: 3px solid var(--warn-bdr);
       padding: 1rem 1.25rem;
       margin: 2rem 0;
       font-size: 0.925rem;
+      line-height: 1.65;
     }
-    .callout strong { color: var(--ink); }
 
-    /* ── Section headings ───────────────────────────────────── */
+    /* ── SECTION HEADINGS ── */
     h2 {
-      font-size: 1.05rem;
-      font-weight: bold;
-      letter-spacing: 0.03em;
-      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin: 2.5rem 0 0.75rem;
-      padding-bottom: 0.4rem;
+      color: var(--muted);
+      margin: 2.5rem 0 0.9rem;
+      padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--rule);
     }
 
-    /* ── Body copy ──────────────────────────────────────────── */
-    p { margin-bottom: 1rem; }
-    ul {
-      margin: 0.5rem 0 1rem 1.5rem;
-    }
-    ul li { margin-bottom: 0.4rem; }
+    /* ── BODY COPY ── */
+    p { margin-bottom: 1rem; font-size: 0.975rem; }
+    ul { margin: 0.5rem 0 1rem 1.5rem; }
+    ul li { margin-bottom: 0.4rem; font-size: 0.975rem; }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Inline emphasis ────────────────────────────────────── */
+    /* ── LABEL BADGE ── */
     .label {
       display: inline-block;
-      font-size: 0.75rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: var(--accent-lt);
-      color: var(--accent);
+      background: var(--red-light);
+      color: var(--red);
       padding: 0.1em 0.5em;
       border-radius: 2px;
       margin-right: 0.4em;
       vertical-align: middle;
     }
 
-    /* ── Deletion request block ─────────────────────────────── */
+    /* ── DELETE BLOCK ── */
     .delete-block {
-      background: var(--accent-lt);
-      border: 1px solid #b8cfe0;
+      background: var(--teal-light);
+      border-left: 3px solid var(--teal);
       padding: 1.25rem 1.5rem;
       margin: 1.5rem 0;
     }
     .delete-block p { margin-bottom: 0.5rem; }
     .delete-block p:last-child { margin-bottom: 0; }
 
-    /* ── Effective date ─────────────────────────────────────── */
+    /* ── META ── */
     .meta {
-      font-size: 0.825rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
       color: var(--muted);
       margin-top: 3rem;
       padding-top: 1.5rem;
       border-top: 1px solid var(--rule);
+      line-height: 1.8;
     }
 
-    /* ── Footer ─────────────────────────────────────────────── */
+    /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--rule);
-      padding: 1.25rem 1.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: center;
+      background: var(--ink);
+      color: rgba(255,255,255,0.3);
+      padding: 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    footer a:hover { color: rgba(255,255,255,0.7); }
 
-    /* ── Responsive ─────────────────────────────────────────── */
-    @media (max-width: 600px) {
-      nav { flex-wrap: wrap; gap: 0.75rem; }
-      h1 { font-size: 1.5rem; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links-group .nav-link { display: none; }
+      h1 { font-size: 1.7rem; }
+      main { padding: 2.5rem 1.25rem 5rem; }
+      footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 1.5rem 1.25rem; }
     }
   </style>
 </head>
 <body>
+<div id="progress"></div>
 
-<!-- ── Navigation ──────────────────────────────────────────── -->
+<!-- NAV -->
 <nav>
-  <a class="brand" href="index.html">NH Families &amp; DCYF&nbsp;·&nbsp;Your Rights</a>
-  <span class="spacer"></span>
-  <a href="index.html">Home</a>
-  <a href="nh-families-your-rights.html">Your Rights</a>
-  <a href="resources.html">Resources</a>
-  <a href="index.html#contact">Sign Up</a>
+  <a href="index.html" class="nav-logo">NH Families &amp; DCYF &nbsp;·&nbsp; <span>Your Rights</span></a>
+  <div class="nav-links-group">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="nh-families-your-rights.html" class="nav-link">Your Rights</a>
+    <a href="resources.html" class="nav-link">Resources</a>
+    <a href="privacy.html" class="nav-link active">Privacy</a>
+    <a href="index.html#contact" class="nav-cta">Sign Up for Updates</a>
+  </div>
 </nav>
 
-<!-- ── Main content ─────────────────────────────────────────── -->
+<!-- MAIN CONTENT -->
 <main>
 
   <p class="page-label">Site Policy</p>
@@ -191,7 +254,6 @@
     your submission at any time.
   </div>
 
-  <!-- 1 -->
   <h2>1 — Who operates this site</h2>
   <p>
     This site is maintained by Torrence Becker, the plaintiff in
@@ -201,7 +263,6 @@
     throughout this policy refer to the site operator.
   </p>
 
-  <!-- 2 -->
   <h2>2 — What we collect</h2>
   <p>When you submit the sign-up form, we may receive:</p>
   <ul>
@@ -222,7 +283,6 @@
     GitHub's own privacy policy and are not used by us for any purpose.
   </p>
 
-  <!-- 3 -->
   <h2>3 — How we use your information</h2>
   <p>We use submitted information solely to:</p>
   <ul>
@@ -235,7 +295,6 @@
     to any third party.
   </p>
 
-  <!-- 4 -->
   <h2>4 — Who can access your information</h2>
   <p>
     Access to submitted information is limited to the site operator and, where
@@ -245,7 +304,6 @@
     General's Office, or any government agency.
   </p>
 
-  <!-- 5 — THE IMPORTANT ONE -->
   <h2>5 — Legal process and subpoena risk</h2>
   <div class="callout">
     <strong><span class="label">Important</span></strong>
@@ -269,7 +327,6 @@
     of your information, to the extent we are legally permitted to do so.
   </p>
 
-  <!-- 6 -->
   <h2>6 — Data storage and security</h2>
   <p>
     Sign-up submissions are processed and stored through a third-party form
@@ -282,7 +339,6 @@
     We do not store payment information because we do not collect any.
   </p>
 
-  <!-- 7 -->
   <h2>7 — How long we keep your information</h2>
   <p>
     We retain submitted information for the duration of the litigation and
@@ -291,7 +347,6 @@
     personally identifiable information that is no longer needed.
   </p>
 
-  <!-- 8 -->
   <h2>8 — Your right to delete your submission</h2>
   <div class="delete-block">
     <p>
@@ -300,7 +355,7 @@
     </p>
     <p>
       To request deletion, email us at
-      <a href="/cdn-cgi/l/email-protection#c8a6a0aea9a5a1a4a1adbbbaa1afa0bcbb88afa5a9a1a4e6aba7a5"><span class="__cf_email__" data-cfemail="fd93959b9c90949194988e8f949a95898ebd9a909c9491d39e9290">[email&#160;protected]</span></a>
+      <a href="mailto:nhfamiliesrights@gmail.com">nhfamiliesrights@gmail.com</a>
       with the subject line <strong>"Delete my information"</strong> and include
       the email address you used when signing up. We will confirm deletion within
       five business days.
@@ -313,7 +368,6 @@
     </p>
   </div>
 
-  <!-- 9 -->
   <h2>9 — Children</h2>
   <p>
     This site is not directed at children under 13. We do not knowingly collect
@@ -321,7 +375,6 @@
     has submitted information, please contact us for immediate deletion.
   </p>
 
-  <!-- 10 -->
   <h2>10 — Changes to this policy</h2>
   <p>
     If we make material changes to this policy, we will update the effective
@@ -330,21 +383,31 @@
     acceptance of the revised policy.
   </p>
 
-  <!-- Contact -->
   <h2>Questions</h2>
   <p>
     Questions about this policy or your information can be directed to
-    <a href="/cdn-cgi/l/email-protection#630d0b05020e0a0f0a0610110a040b171023040e020a0f4d000c0e"><span class="__cf_email__" data-cfemail="d9b7b1bfb8b4b0b5b0bcaaabb0beb1adaa99beb4b8b0b5f7bab6b4">[email&#160;protected]</span></a>.
+    <a href="mailto:nhfamiliesrights@gmail.com">nhfamiliesrights@gmail.com</a>.
   </p>
 
   <div class="meta">
     <p>Effective date: March 2026 &nbsp;·&nbsp; Last updated: March 2026</p>
-    <p>
-      Related proceeding: <em>Becker v. DCYF et al.</em>,
-      Civil No.&nbsp;1:24-cv-00430-JL-TSM, U.S.D.C. D.N.H.
-    </p>
+    <p>Related proceeding: <em>Becker v. DCYF et al.</em>, Civil No.&nbsp;1:24-cv-00430-JL-TSM, U.S.D.C. D.N.H.</p>
   </div>
 
 </main>
 
-<!-- ── Footer ──────────────────────────────────────────
+<!-- FOOTER -->
+<footer>
+  <span>NH Families &amp; DCYF — Your Rights &nbsp;·&nbsp; Informational purposes only. Not legal advice.</span>
+  <span>Related: <span style="color:rgba(255,255,255,0.2);">Becker v. DCYF et al.</span> &nbsp;·&nbsp; Civil No.&nbsp;1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
+  <span><a href="privacy.html">Privacy Policy</a></span>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    document.getElementById('progress').style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+</script>
+</body>
+</html>
