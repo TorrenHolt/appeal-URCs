@@ -632,6 +632,13 @@
   </div>
 </header>
 
+<!-- EXPAND ALL BUTTON -->
+<div style="max-width:900px; margin:1.5rem auto 0.5rem; padding:0 2rem; text-align:right;">
+  <button id="toggleAllBtn" style="background:var(--ink); color:var(--warm-white,#faf8f4); border:1px solid var(--red); padding:0.45rem 1rem; font-family:'DM Mono',system-ui,monospace; font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; cursor:pointer;">
+    ⬇ Expand All
+  </button>
+</div>
+
 <!-- LEGAL AID -->
 <div class="section fade-up section-anchor" id="legal-aid">
   <div class="eyebrow">Free & Low-Cost Legal Help</div>
@@ -1021,3 +1028,177 @@
       el.classList.add('will-animate');
     }
   });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-up.will-animate').forEach(el => observer.observe(el));
+</script>
+
+<script>
+// ── COLLAPSIBLE SECTIONS ──────────────────────────────────────────────────────
+// Adapted from becker_RTK_update_2.html for the eyebrow/h2 section pattern.
+(function() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .collapse-trigger {
+      cursor: pointer;
+      user-select: none;
+      display: block;
+    }
+    .collapse-trigger:hover .collapse-arrow { opacity: 1; }
+    .collapse-arrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--red);
+      font-family: 'DM Mono', monospace;
+      margin-left: 0.6rem;
+      transition: transform 0.2s ease;
+      opacity: 0.7;
+      vertical-align: middle;
+    }
+    .collapse-arrow.collapsed { transform: rotate(-90deg); }
+    .section-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+    .section-footer a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .section-footer a:hover { text-decoration: underline; }
+    .collapse-section-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--rule);
+      padding: 0.25rem 0.65rem;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .collapse-section-btn:hover { color: var(--ink); border-color: var(--ink); }
+  `;
+  document.head.appendChild(style);
+
+  const containers = document.querySelectorAll('.section, .section-inner');
+
+  containers.forEach(container => {
+    const eyebrow = container.querySelector(':scope > .eyebrow');
+    const h2 = container.querySelector(':scope > h2');
+    if (!eyebrow || !h2) return;
+    if (container.dataset.collapsible) return;
+    container.dataset.collapsible = '1';
+
+    const arrow = document.createElement('span');
+    arrow.className = 'collapse-arrow';
+    arrow.innerHTML = '▼';
+    h2.appendChild(arrow);
+
+    const trigger = document.createElement('div');
+    trigger.className = 'collapse-trigger';
+    container.insertBefore(trigger, eyebrow);
+    trigger.appendChild(eyebrow);
+    trigger.appendChild(h2);
+
+    const content = document.createElement('div');
+    content.className = 'section-content';
+    const siblings = [];
+    let sib = trigger.nextElementSibling;
+    while (sib) { siblings.push(sib); sib = sib.nextElementSibling; }
+    siblings.forEach(s => content.appendChild(s));
+
+    const footer = document.createElement('div');
+    footer.className = 'section-footer';
+    const collapseBtn = document.createElement('button');
+    collapseBtn.className = 'collapse-section-btn';
+    collapseBtn.textContent = '▲ Collapse Section';
+    collapseBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      content.style.display = 'none';
+      arrow.innerHTML = '▶';
+      arrow.classList.add('collapsed');
+      setTimeout(() => trigger.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
+    });
+    footer.innerHTML = '<a href="#">↑ Back to top</a>';
+    footer.insertBefore(collapseBtn, footer.firstChild);
+    content.appendChild(footer);
+    container.appendChild(content);
+
+    trigger.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') return;
+      const hidden = content.style.display === 'none';
+      content.style.display = hidden ? '' : 'none';
+      arrow.classList.toggle('collapsed', !hidden);
+      arrow.innerHTML = hidden ? '▼' : '▶';
+    });
+  });
+
+  // ── Global Expand/Collapse All ──────────────────────────────────────────────
+  const toggleBtn = document.getElementById('toggleAllBtn');
+  if (toggleBtn) {
+    document.querySelectorAll('.section-content').forEach(c => { c.style.display = 'none'; });
+    document.querySelectorAll('.collapse-arrow').forEach(a => { a.innerHTML = '▶'; a.classList.add('collapsed'); });
+    toggleBtn.innerHTML = '⬇ Expand All';
+
+    toggleBtn.addEventListener('click', function() {
+      const allContents = document.querySelectorAll('.section-content');
+      const allArrows   = document.querySelectorAll('.collapse-arrow');
+      const isAnyCollapsed = Array.from(allContents).some(c => c.style.display === 'none');
+      allContents.forEach(c => { c.style.display = isAnyCollapsed ? '' : 'none'; });
+      allArrows.forEach(a => {
+        a.innerHTML = isAnyCollapsed ? '▼' : '▶';
+        a.classList.toggle('collapsed', !isAnyCollapsed);
+      });
+      this.innerHTML = isAnyCollapsed ? '⬆ Collapse All' : '⬇ Expand All';
+    });
+  }
+
+  // ── Auto-expand on anchor navigation ───────────────────────────────────────
+  function expandForId(id) {
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    let node = target;
+    while (node && node !== document.body) {
+      if (node.classList && node.classList.contains('section-content') && node.style.display === 'none') {
+        node.style.display = '';
+        const trig = node.previousElementSibling;
+        if (trig) {
+          const arr = trig.querySelector('.collapse-arrow');
+          if (arr) { arr.innerHTML = '▼'; arr.classList.remove('collapsed'); }
+        }
+      }
+      node = node.parentElement;
+    }
+    setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+  }
+
+  if (location.hash) setTimeout(() => expandForId(location.hash.slice(1)), 150);
+  window.addEventListener('hashchange', () => expandForId(location.hash.slice(1)));
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const id = link.getAttribute('href').slice(1);
+    if (id) setTimeout(() => expandForId(id), 40);
+  });
+
+})();
+</script>
+</body>
+</html>
