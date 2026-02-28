@@ -661,6 +661,37 @@
     .nav-links-group .nav-link { display: none; }
   }
 
+  /* ── PAGE DISCLAIMER BANNER ── */
+  .page-disclaimer {
+    background: var(--gold-light);
+    border-bottom: 1px solid rgba(160,120,48,0.25);
+    padding: 1rem 2rem;
+  }
+  .page-disclaimer-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .page-disclaimer-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    padding-top: 0.1rem;
+    flex-shrink: 0;
+  }
+  .page-disclaimer p {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+  .page-disclaimer strong { color: var(--ink); font-weight: 600; }
+
   /* ── ANIMATIONS ── */
   .fade-up {
     transition: opacity 0.6s ease, transform 0.6s ease;
@@ -681,6 +712,7 @@
   <div class="nav-links-group">
     <a href="index.html" class="nav-link">Home</a>
     <a href="nh-families-your-rights.html" class="nav-link active">Your Rights</a>
+    <a href="resources.html" class="nav-link">Resources</a>
     <a href="index.html#contact" class="nav-cta">Get in Touch</a>
   </div>
 </nav>
@@ -704,6 +736,18 @@
     </div>
   </div>
 </header>
+
+<!-- PAGE DISCLAIMER BANNER -->
+<div class="page-disclaimer">
+  <div class="page-disclaimer-inner">
+    <div class="page-disclaimer-icon">Note</div>
+    <p>
+      <strong>This page describes legal arguments being pursued in active litigation.</strong>
+      The arguments presented here arise from <em>Becker v. DCYF et al.</em> (Civil No. 1:24-cv-00430-JL-TSM) and related administrative proceedings before the DHHS Administrative Appeals Unit. They reflect positions that have been raised and, in some instances, preliminarily resolved in that litigation — but many questions remain pending before the AAU and the federal court.
+      <strong>This is not legal advice.</strong> Every family's circumstances are different. The applicability of these arguments to any individual case, and the outcome of any appeal, will depend on the specific facts of that case and the rulings of the applicable tribunal. Results cannot be predicted.
+    </p>
+  </div>
+</div>
 
 <!-- SECTION 1: THE FINDINGS REQUIREMENT -->
 <div class="section fade-up section-anchor" id="findings-requirement">
@@ -1093,7 +1137,7 @@
     <details class="faq-item">
       <summary class="faq-q">What is the difference between the administrative appeal and the federal lawsuit?</summary>
       <div class="faq-a">
-        <p>The administrative appeals before the DHHS Administrative Appeals Unit are state administrative proceedings. They are decided by an Administrative Law Judge and can result in the finding being vacated and expunged from DCYF's records. The process is governed by state administrative law (RSA 541-A and DHHS rules).</p>
+        <p>The administrative appeals before the DHHS Administrative Appeals Unit are state administrative proceedings. They are decided by an Administrative Law Judge and can result in the finding being vacated and expunged from DCYF's records. The process is governed by state administrative law (RSA 541-A and DHHS rules). A step-by-step overview of how to file is on the <a href="resources.html#how-to-appeal">Resources page</a>.</p>
         <p>The federal civil rights case — <em>Becker v. DCYF et al.</em>, Civil No. 1:24-cv-00430-JL-TSM — is a separate lawsuit in U.S. District Court. It raises constitutional and federal statutory claims (including 42 U.S.C. § 1983) arising from the same conduct. The two proceedings are parallel and complementary, not mutually exclusive.</p>
       </div>
     </details>
@@ -1106,7 +1150,10 @@
   <div class="cta-banner-inner">
     <h2>Does this apply to your situation?</h2>
     <p>You do not need to know whether you have grounds before reaching out. Tell us about your letter and we can help you understand whether any of these legal arguments may be relevant to your case — at no cost and with no obligation.</p>
-    <a href="index.html#contact" class="cta-banner-btn">Get in Touch →</a>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:1.5rem;">
+      <a href="index.html#contact" class="cta-banner-btn">Get in Touch →</a>
+      <a href="resources.html" class="cta-banner-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:rgba(255,255,255,0.85);">Legal Aid &amp; How to Appeal →</a>
+    </div>
   </div>
 </div>
 
