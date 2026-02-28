@@ -718,7 +718,7 @@
           <p>Submit your completed Appeal Request Form and copy of your Notice of Decision to the AAU. You can file by mail, email, or fax:</p>
           <ul style="margin: 0.65rem 0 0.65rem 1.25rem; color: var(--ink-soft); font-size: 0.875rem; line-height:1.9;">
             <li><strong>Mail:</strong> DHHS Administrative Appeals Unit, 105 Pleasant Street, Concord, NH 03301 — send by certified mail and keep your receipt</li>
-            <li><strong>Email:</strong> <a href="mailto:dhhs.aau@dhhs.nh.gov">dhhs.aau@dhhs.nh.gov</a> — email creates a timestamp and is fastest</li>
+            <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#c8aca0a0bbe6a9a9bd88aca0a0bbe6a6a0e6afa7be"><span class="__cf_email__" data-cfemail="45212d2d366b24243005212d2d366b2b2d6b222a33">[email&#160;protected]</span></a> — email creates a timestamp and is fastest</li>
             <li><strong>Fax:</strong> 603-271-8422</li>
           </ul>
           <p>The AAU can also be reached by phone at <strong>603-271-4292</strong> (toll-free: 1-800-852-3345 ext. 14292) if you have questions about the process.</p>
@@ -989,7 +989,7 @@
   <span>Related: <span style="color:rgba(255,255,255,0.2);">Becker v. DCYF et al.</span> &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H.</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Reading progress
   window.addEventListener('scroll', () => {
     const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
@@ -1000,7 +1000,173 @@
   const fadeEls = document.querySelectorAll('.fade-up');
   fadeEls.forEach(el => {
     const rect = el.getBoundingClientRect();
-    if (rect.top >= window.innerHeight) {
-      el.classList.add('will-animate');
-    }
+    if (rect.top >= window.innerHeight) el.classList.add('will-animate');
   });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-up.will-animate').forEach(el => observer.observe(el));
+
+</script>
+
+<script>
+// ── COLLAPSIBLE SECTIONS ─────────────────────────────────────────────────────
+(function () {
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .section-toggle-header {
+      cursor: pointer;
+      user-select: none;
+    }
+    .section-toggle-header h2 {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .collapse-arrow {
+      font-size: 0.85rem;
+      color: var(--red);
+      font-family: 'DM Mono', monospace;
+      flex-shrink: 0;
+      margin-left: auto;
+      transition: transform 0.2s ease;
+      display: inline-block;
+      padding-left: 0.75rem;
+      opacity: 0.7;
+    }
+    .collapse-arrow.collapsed { transform: rotate(-90deg); }
+    .section-toggle-header:hover .collapse-arrow { opacity: 1; }
+    .section-content-collapsible { transition: none; }
+    .section-collapse-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+    .collapse-section-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--rule);
+      padding: 0.25rem 0.65rem;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      border-radius: 1px;
+    }
+    .collapse-section-btn:hover { color: var(--ink); border-color: var(--ink); }
+    .back-to-top-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      text-decoration: none;
+    }
+    .back-to-top-btn:hover { text-decoration: underline; }
+  `;
+  document.head.appendChild(style);
+
+  const containers = document.querySelectorAll('.section, .section-inner');
+
+  containers.forEach(container => {
+    const h2 = container.querySelector(':scope > h2');
+    if (!h2) return;
+
+    const eyebrow = container.querySelector(':scope > .eyebrow');
+
+    const toggleHeader = document.createElement('div');
+    toggleHeader.className = 'section-toggle-header';
+
+    if (eyebrow) container.insertBefore(toggleHeader, eyebrow);
+    else container.insertBefore(toggleHeader, h2);
+    if (eyebrow) toggleHeader.appendChild(eyebrow);
+    toggleHeader.appendChild(h2);
+
+    const arrow = document.createElement('span');
+    arrow.className = 'collapse-arrow';
+    arrow.innerHTML = '▼';
+    h2.appendChild(arrow);
+
+    const content = document.createElement('div');
+    content.className = 'section-content-collapsible';
+
+    const siblings = [];
+    let sib = toggleHeader.nextElementSibling;
+    while (sib) { siblings.push(sib); sib = sib.nextElementSibling; }
+    siblings.forEach(s => content.appendChild(s));
+
+    const footer = document.createElement('div');
+    footer.className = 'section-collapse-footer';
+
+    const collapseBtn = document.createElement('button');
+    collapseBtn.className = 'collapse-section-btn';
+    collapseBtn.textContent = '▲ Collapse';
+    collapseBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      content.style.display = 'none';
+      arrow.innerHTML = '▶';
+      arrow.classList.add('collapsed');
+      setTimeout(() => toggleHeader.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
+    });
+
+    const backTop = document.createElement('a');
+    backTop.href = '#';
+    backTop.className = 'back-to-top-btn';
+    backTop.textContent = '↑ Back to top';
+
+    footer.appendChild(collapseBtn);
+    footer.appendChild(backTop);
+    content.appendChild(footer);
+    container.appendChild(content);
+
+    toggleHeader.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') return;
+      const hidden = content.style.display === 'none';
+      content.style.display = hidden ? '' : 'none';
+      arrow.innerHTML = hidden ? '▼' : '▶';
+      arrow.classList.toggle('collapsed', !hidden);
+    });
+  });
+
+  function expandById(id) {
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    const content = target.querySelector('.section-content-collapsible')
+      || target.closest('.section')?.querySelector('.section-content-collapsible')
+      || target.closest('.section-wide')?.querySelector('.section-content-collapsible');
+    const arrow = content?.closest('.section, .section-inner')?.querySelector('.collapse-arrow');
+    if (content && content.style.display === 'none') {
+      content.style.display = '';
+      if (arrow) { arrow.innerHTML = '▼'; arrow.classList.remove('collapsed'); }
+    }
+    setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+  }
+
+  // Collapse all sections on load
+  document.querySelectorAll('.section-content-collapsible').forEach(c => {
+    c.style.display = 'none';
+  });
+  document.querySelectorAll('.collapse-arrow').forEach(a => {
+    a.innerHTML = '▶';
+    a.classList.add('collapsed');
+  });
+
+  if (location.hash) setTimeout(() => expandById(location.hash.slice(1)), 150);
+  window.addEventListener('hashchange', () => expandById(location.hash.slice(1)));
+
+})();
+</script>
+
+</body>
+</html>
