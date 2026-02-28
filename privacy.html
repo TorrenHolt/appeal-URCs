@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — NH Families & DCYF</title>
+  <style>
+    /* ── Base reset & tokens ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #1a1a1a;
+      --muted:    #555;
+      --rule:     #d8d8d8;
+      --accent:   #1a3a5c;
+      --accent-lt:#e8eef5;
+      --warn-bg:  #fdf6e3;
+      --warn-bdr: #c8a84b;
+      --bg:       #ffffff;
+      --max:      720px;
+      --sans:     'Georgia', 'Times New Roman', serif; /* matches civic/legal tone */
+      --mono:     'Courier New', monospace;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    /* ── Nav (matches site) ────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--rule);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-size: 0.875rem;
+    }
+    nav .brand {
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    nav a:hover { color: var(--accent); }
+    nav .spacer { flex: 1; }
+
+    /* ── Page layout ────────────────────────────────────────── */
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── Header block ───────────────────────────────────────── */
+    .page-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: normal;
+      color: var(--accent);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ── Callout box ────────────────────────────────────────── */
+    .callout {
+      background: var(--warn-bg);
+      border-left: 3px solid var(--warn-bdr);
+      padding: 1rem 1.25rem;
+      margin: 2rem 0;
+      font-size: 0.925rem;
+    }
+    .callout strong { color: var(--ink); }
+
+    /* ── Section headings ───────────────────────────────────── */
+    h2 {
+      font-size: 1.05rem;
+      font-weight: bold;
+      letter-spacing: 0.03em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin: 2.5rem 0 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ── Body copy ──────────────────────────────────────────── */
+    p { margin-bottom: 1rem; }
+    ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    ul li { margin-bottom: 0.4rem; }
+
+    /* ── Inline emphasis ────────────────────────────────────── */
+    .label {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent-lt);
+      color: var(--accent);
+      padding: 0.1em 0.5em;
+      border-radius: 2px;
+      margin-right: 0.4em;
+      vertical-align: middle;
+    }
+
+    /* ── Deletion request block ─────────────────────────────── */
+    .delete-block {
+      background: var(--accent-lt);
+      border: 1px solid #b8cfe0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .delete-block p { margin-bottom: 0.5rem; }
+    .delete-block p:last-child { margin-bottom: 0; }
+
+    /* ── Effective date ─────────────────────────────────────── */
+    .meta {
+      font-size: 0.825rem;
+      color: var(--muted);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      nav { flex-wrap: wrap; gap: 0.75rem; }
+      h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────────────── -->
+<nav>
+  <a class="brand" href="index.html">NH Families &amp; DCYF&nbsp;·&nbsp;Your Rights</a>
+  <span class="spacer"></span>
+  <a href="index.html">Home</a>
+  <a href="nh-families-your-rights.html">Your Rights</a>
+  <a href="resources.html">Resources</a>
+  <a href="index.html#contact">Sign Up</a>
+</nav>
+
+<!-- ── Main content ─────────────────────────────────────────── -->
+<main>
+
+  <p class="page-label">Site Policy</p>
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">
+    What we collect, how we use it, who can access it, and your rights —
+    including how to ask us to delete your information.
+  </p>
+
+  <div class="callout">
+    <strong>Plain-language summary:</strong> We collect only what you voluntarily
+    submit through the sign-up form (email, name, approximate case date, county).
+    We do not sell it, share it with DCYF or any government agency, or use it
+    for advertising. We store it in a third-party form service. It could
+    theoretically be subpoenaed in legal proceedings. You can ask us to delete
+    your submission at any time.
+  </div>
+
+  <!-- 1 -->
+  <h2>1 — Who operates this site</h2>
+  <p>
+    This site is maintained by Torrence Becker, the plaintiff in
+    <em>Becker v. DCYF et al.</em>, Civil No.&nbsp;1:24-cv-00430-JL-TSM, pending in
+    the U.S. District Court for the District of New Hampshire. It is not affiliated
+    with DCYF, DHHS, or any government agency. References to "we," "us," or "our"
+    throughout this policy refer to the site operator.
+  </p>
+
+  <!-- 2 -->
+  <h2>2 — What we collect</h2>
+  <p>When you submit the sign-up form, we may receive:</p>
+  <ul>
+    <li><strong>Email address</strong> — required to send you updates</li>
+    <li><strong>Name</strong> — optional</li>
+    <li><strong>Approximate year of URC finding</strong> — optional; used only to understand how many families were affected and in what period</li>
+    <li><strong>County</strong> — optional; used only to understand geographic scope</li>
+  </ul>
+  <p>
+    We do not collect Social Security numbers, case file numbers, the names of
+    children, details about any specific DCYF investigation, or any other sensitive
+    personal information. <strong>Please do not include that information in any
+    submission.</strong>
+  </p>
+  <p>
+    We also collect standard server logs (IP address, browser type, referring page)
+    through our hosting provider (GitHub Pages). These logs are governed by
+    GitHub's own privacy policy and are not used by us for any purpose.
+  </p>
+
+  <!-- 3 -->
+  <h2>3 — How we use your information</h2>
+  <p>We use submitted information solely to:</p>
+  <ul>
+    <li>Send you updates about this litigation and related administrative proceedings as they develop</li>
+    <li>Understand, in aggregate, how many NH families were affected by URC findings and in what time period</li>
+  </ul>
+  <p>
+    We do not use your information for advertising, marketing, fundraising,
+    or any commercial purpose. We do not sell, rent, or trade your information
+    to any third party.
+  </p>
+
+  <!-- 4 -->
+  <h2>4 — Who can access your information</h2>
+  <p>
+    Access to submitted information is limited to the site operator and, where
+    necessary, any attorneys or legal advocates directly assisting with
+    <em>Becker v. DCYF et al.</em> or the related AAU administrative appeals.
+    Your information will not be shared with DCYF, DHHS, the NH Attorney
+    General's Office, or any government agency.
+  </p>
+
+  <!-- 5 — THE IMPORTANT ONE -->
+  <h2>5 — Legal process and subpoena risk</h2>
+  <div class="callout">
+    <strong><span class="label">Important</span></strong>
+    This site is connected to active federal civil rights litigation. In any
+    litigation, parties may seek discovery of documents and records held by
+    others. There is a possibility — which we cannot rule out — that a court
+    could order production of information you submitted to this site in response
+    to a subpoena or other legal process. We would comply with any valid court
+    order, as required by law.
+  </div>
+  <p>
+    We have no reason to believe this will occur, and we have no current
+    intention of using sign-up information in any court proceeding. However,
+    you should be aware that no digital record is completely beyond the reach
+    of legal process. If this risk concerns you, do not submit your information —
+    you can still follow this site and reach out by email through a separate
+    account of your choosing.
+  </p>
+  <p>
+    We will notify you by email if we receive legal process requiring disclosure
+    of your information, to the extent we are legally permitted to do so.
+  </p>
+
+  <!-- 6 -->
+  <h2>6 — Data storage and security</h2>
+  <p>
+    Sign-up submissions are processed and stored through a third-party form
+    service. That service's own privacy policy governs how it handles data on
+    its infrastructure. We take reasonable steps to limit who has access to
+    collected information, but no digital storage is guaranteed to be secure
+    against all possible breaches.
+  </p>
+  <p>
+    We do not store payment information because we do not collect any.
+  </p>
+
+  <!-- 7 -->
+  <h2>7 — How long we keep your information</h2>
+  <p>
+    We retain submitted information for the duration of the litigation and
+    related administrative proceedings, unless you ask us to delete it sooner.
+    When the proceedings conclude and the record is closed, we will delete all
+    personally identifiable information that is no longer needed.
+  </p>
+
+  <!-- 8 -->
+  <h2>8 — Your right to delete your submission</h2>
+  <div class="delete-block">
+    <p>
+      You can ask us to delete your submission at any time, for any reason,
+      with no explanation required.
+    </p>
+    <p>
+      To request deletion, email us at
+      <a href="mailto:nhfamiliesrights@gmail.com">nhfamiliesrights@gmail.com</a>
+      with the subject line <strong>"Delete my information"</strong> and include
+      the email address you used when signing up. We will confirm deletion within
+      five business days.
+    </p>
+    <p>
+      Deletion removes your information from our records. It does not affect
+      any information already shared with attorneys or advocates in connection
+      with the litigation, or any aggregate statistics we have already compiled
+      (which do not identify individuals).
+    </p>
+  </div>
+
+  <!-- 9 -->
+  <h2>9 — Children</h2>
+  <p>
+    This site is not directed at children under 13. We do not knowingly collect
+    personal information from children. If a parent or guardian believes a child
+    has submitted information, please contact us for immediate deletion.
+  </p>
+
+  <!-- 10 -->
+  <h2>10 — Changes to this policy</h2>
+  <p>
+    If we make material changes to this policy, we will update the effective
+    date below and, where feasible, notify you by email if you have signed up
+    for updates. Continued use of this site after a policy change constitutes
+    acceptance of the revised policy.
+  </p>
+
+  <!-- Contact -->
+  <h2>Questions</h2>
+  <p>
+    Questions about this policy or your information can be directed to
+    <a href="mailto:nhfamiliesrights@gmail.com">nhfamiliesrights@gmail.com</a>.
+  </p>
+
+  <div class="meta">
+    <p>Effective date: March 2026 &nbsp;·&nbsp; Last updated: March 2026</p>
+    <p>
+      Related proceeding: <em>Becker v. DCYF et al.</em>,
+      Civil No.&nbsp;1:24-cv-00430-JL-TSM, U.S.D.C. D.N.H.
+    </p>
+  </div>
+
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────── -->
+<footer>
+  NH Families &amp; DCYF — Your Rights&nbsp;·&nbsp;Informational purposes only. Not legal advice.
+  &nbsp;·&nbsp; Related: <em>Becker v. DCYF et al.</em>&nbsp;·&nbsp;Civil No.&nbsp;1:24-cv-00430-JL-TSM&nbsp;·&nbsp;U.S.D.C. D.N.H.
+</footer>
+
+</body>
+</html>
