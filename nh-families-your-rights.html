@@ -1188,5 +1188,178 @@
   }, { threshold: 0.05 });
   document.querySelectorAll('.fade-up.will-animate').forEach(el => observer.observe(el));
 </script>
+
+<script>
+// ── COLLAPSIBLE SECTIONS ─────────────────────────────────────────────────────
+// Adapted for the sister site's structure: sections use .eyebrow + h2
+// rather than .section-header. Dynamically wraps them and adds toggle behavior.
+(function () {
+
+  // Inject CSS
+  const style = document.createElement('style');
+  style.textContent = `
+    .section-toggle-header {
+      cursor: pointer;
+      user-select: none;
+    }
+    .section-toggle-header h2 {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .collapse-arrow {
+      font-size: 0.85rem;
+      color: var(--red);
+      font-family: 'DM Mono', monospace;
+      flex-shrink: 0;
+      margin-left: auto;
+      transition: transform 0.2s ease;
+      display: inline-block;
+      padding-left: 0.75rem;
+      opacity: 0.7;
+    }
+    .collapse-arrow.collapsed { transform: rotate(-90deg); }
+    .section-toggle-header:hover .collapse-arrow { opacity: 1; }
+    .section-content-collapsible { transition: none; }
+    .section-collapse-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+    .collapse-section-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--rule);
+      padding: 0.25rem 0.65rem;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      border-radius: 1px;
+    }
+    .collapse-section-btn:hover { color: var(--ink); border-color: var(--ink); }
+    .back-to-top-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      text-decoration: none;
+    }
+    .back-to-top-btn:hover { text-decoration: underline; }
+  `;
+  document.head.appendChild(style);
+
+  // Find all collapsible containers — .section and .section-inner that have an h2
+  const containers = document.querySelectorAll('.section, .section-inner');
+
+  containers.forEach(container => {
+    const h2 = container.querySelector(':scope > h2');
+    if (!h2) return;
+
+    const eyebrow = container.querySelector(':scope > .eyebrow');
+
+    // Build a toggle header wrapper
+    const toggleHeader = document.createElement('div');
+    toggleHeader.className = 'section-toggle-header';
+
+    // Move eyebrow and h2 into the wrapper
+    if (eyebrow) container.insertBefore(toggleHeader, eyebrow);
+    else container.insertBefore(toggleHeader, h2);
+    if (eyebrow) toggleHeader.appendChild(eyebrow);
+    toggleHeader.appendChild(h2);
+
+    // Add collapse arrow inside h2
+    const arrow = document.createElement('span');
+    arrow.className = 'collapse-arrow';
+    arrow.innerHTML = '▼';
+    h2.appendChild(arrow);
+
+    // Wrap all remaining siblings after toggleHeader into section-content
+    const content = document.createElement('div');
+    content.className = 'section-content-collapsible';
+
+    const siblings = [];
+    let sib = toggleHeader.nextElementSibling;
+    while (sib) {
+      siblings.push(sib);
+      sib = sib.nextElementSibling;
+    }
+    siblings.forEach(s => content.appendChild(s));
+
+    // Add footer with collapse + back-to-top
+    const footer = document.createElement('div');
+    footer.className = 'section-collapse-footer';
+
+    const collapseBtn = document.createElement('button');
+    collapseBtn.className = 'collapse-section-btn';
+    collapseBtn.textContent = '▲ Collapse';
+    collapseBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      content.style.display = 'none';
+      arrow.innerHTML = '▶';
+      arrow.classList.add('collapsed');
+      setTimeout(() => toggleHeader.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
+    });
+
+    const backTop = document.createElement('a');
+    backTop.href = '#';
+    backTop.className = 'back-to-top-btn';
+    backTop.textContent = '↑ Back to top';
+
+    footer.appendChild(collapseBtn);
+    footer.appendChild(backTop);
+    content.appendChild(footer);
+    container.appendChild(content);
+
+    // Click header to toggle
+    toggleHeader.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') return;
+      const hidden = content.style.display === 'none';
+      content.style.display = hidden ? '' : 'none';
+      arrow.innerHTML = hidden ? '▼' : '▶';
+      arrow.classList.toggle('collapsed', !hidden);
+    });
+  });
+
+  // Auto-expand section when navigated to via anchor link
+  function expandById(id) {
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    const content = target.querySelector('.section-content-collapsible')
+      || target.closest('.section')?.querySelector('.section-content-collapsible')
+      || target.closest('.section-wide')?.querySelector('.section-content-collapsible');
+    const arrow = content?.closest('.section, .section-inner')
+      ?.querySelector('.collapse-arrow');
+    if (content && content.style.display === 'none') {
+      content.style.display = '';
+      if (arrow) { arrow.innerHTML = '▼'; arrow.classList.remove('collapsed'); }
+    }
+    setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+  }
+
+  // Collapse all sections on load
+  document.querySelectorAll('.section-content-collapsible').forEach(c => {
+    c.style.display = 'none';
+  });
+  document.querySelectorAll('.collapse-arrow').forEach(a => {
+    a.innerHTML = '▶';
+    a.classList.add('collapsed');
+  });
+
+  if (location.hash) setTimeout(() => expandById(location.hash.slice(1)), 150);
+  window.addEventListener('hashchange', () => expandById(location.hash.slice(1)));
+
+})();
+</script>
+
 </body>
 </html>
